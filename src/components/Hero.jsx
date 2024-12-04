@@ -31,6 +31,14 @@ const Hero = () => {
         };
     }, []);
 
+    // Función para hacer scroll suave a una sección
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <section
             id="hero"
@@ -49,6 +57,10 @@ const Hero = () => {
                     {/* Botón Ver Proyectos */}
                     <a
                         href="#projects"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection("projects");
+                        }}
                         className="bg-slate-50 text-gray-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
                     >
                         Ver Proyectos
@@ -56,6 +68,10 @@ const Hero = () => {
                     {/* Botón Contáctame */}
                     <a
                         href="#contact"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection("contact");
+                        }}
                         className="border border-slate-50 text-slate-50 px-6 py-2 rounded-full font-bold hover:bg-slate-50 hover:text-gray-900 transition duration-300"
                     >
                         Contáctame
@@ -64,7 +80,14 @@ const Hero = () => {
             </div>
             {/* Icono de Chevron */}
             <div className="absolute bottom-20 animate-bounce">
-                <a href="#about" className="text-slate-200 hover:text-slate-400 transition duration-300">
+                <a
+                    href="#about"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection("about");
+                    }}
+                    className="text-slate-200 hover:text-slate-400 transition duration-300"
+                >
                     <FaChevronDown size={24} />
                 </a>
             </div>

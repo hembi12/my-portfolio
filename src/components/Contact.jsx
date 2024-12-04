@@ -44,13 +44,17 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-white">
+        <section
+            id="contact"
+            className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-white"
+        >
             <div className="container mx-auto px-4">
                 <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
                     Contáctame
                 </h2>
                 <p className="text-center text-lg mb-12">
-                    Si tienes alguna pregunta, propuesta, no dudes en enviarme un mensaje a través del formulario de contacto.
+                    Si tienes alguna pregunta o propuesta, no dudes en enviarme un mensaje a
+                    través del formulario de contacto.
                 </p>
                 <div className="max-w-2xl mx-auto">
                     <div className="bg-slate-700 rounded-t-lg px-4 py-2 flex items-center space-x-2">
@@ -58,9 +62,16 @@ const Contact = () => {
                         <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
-                    <form onSubmit={handleSubmit} className="bg-slate-600 p-8 rounded-b-lg shadow-lg">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="bg-slate-600 p-8 rounded-b-lg shadow-lg"
+                    >
+                        {/* Nombre */}
                         <div className="mb-6">
-                            <label htmlFor="name" className="block text-slate-100 text-lg font-semibold mb-2">
+                            <label
+                                htmlFor="name"
+                                className="block text-slate-100 text-lg font-semibold mb-2"
+                            >
                                 Nombre
                             </label>
                             <input
@@ -72,10 +83,16 @@ const Contact = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                             />
-                            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                            {errors.name && (
+                                <p className="text-red-500 text-sm">{errors.name}</p>
+                            )}
                         </div>
+                        {/* Correo Electrónico */}
                         <div className="mb-6">
-                            <label htmlFor="email" className="block text-slate-100 text-lg font-semibold mb-2">
+                            <label
+                                htmlFor="email"
+                                className="block text-slate-100 text-lg font-semibold mb-2"
+                            >
                                 Correo Electrónico
                             </label>
                             <input
@@ -87,10 +104,16 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                             />
-                            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                            {errors.email && (
+                                <p className="text-red-500 text-sm">{errors.email}</p>
+                            )}
                         </div>
+                        {/* Asunto */}
                         <div className="mb-6">
-                            <label htmlFor="subject" className="block text-slate-100 text-lg font-semibold mb-2">
+                            <label
+                                htmlFor="subject"
+                                className="block text-slate-100 text-lg font-semibold mb-2"
+                            >
                                 Asunto
                             </label>
                             <select
@@ -107,10 +130,16 @@ const Contact = () => {
                                 <option value="propuesta">Propuesta</option>
                                 <option value="otro">Otro</option>
                             </select>
-                            {errors.subject && <p className="text-red-500 text-sm">{errors.subject}</p>}
+                            {errors.subject && (
+                                <p className="text-red-500 text-sm">{errors.subject}</p>
+                            )}
                         </div>
+                        {/* Mensaje */}
                         <div className="mb-6">
-                            <label htmlFor="message" className="block text-slate-100 text-lg font-semibold mb-2">
+                            <label
+                                htmlFor="message"
+                                className="block text-slate-100 text-lg font-semibold mb-2"
+                            >
                                 Mensaje
                             </label>
                             <textarea
@@ -122,8 +151,11 @@ const Contact = () => {
                                 value={formData.message}
                                 onChange={handleChange}
                             ></textarea>
-                            {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+                            {errors.message && (
+                                <p className="text-red-500 text-sm">{errors.message}</p>
+                            )}
                         </div>
+                        {/* Botón Enviar Mensaje */}
                         <div className="text-center">
                             <button
                                 type="submit"

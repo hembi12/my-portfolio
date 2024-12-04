@@ -4,7 +4,8 @@ const Projects = () => {
     const projects = [
         {
             title: "E-Commerce",
-            description: "Plataforma de comercio electrónico con carrito de compras y sistema de pago integrado.",
+            description:
+                "Plataforma de comercio electrónico con carrito de compras y sistema de pago integrado.",
             image: "https://via.placeholder.com/300",
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -16,7 +17,8 @@ const Projects = () => {
         },
         {
             title: "Portfolio",
-            description: "Sitio web personal diseñado para mostrar mis proyectos y habilidades.",
+            description:
+                "Sitio web personal diseñado para mostrar mis proyectos y habilidades.",
             image: "https://via.placeholder.com/300",
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -28,7 +30,8 @@ const Projects = () => {
         },
         {
             title: "Blog",
-            description: "Aplicación de blog con autenticación de usuarios y sistema de comentarios.",
+            description:
+                "Aplicación de blog con autenticación de usuarios y sistema de comentarios.",
             image: "https://via.placeholder.com/300",
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
@@ -41,7 +44,10 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-slate-100">
+        <section
+            id="projects"
+            className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-slate-100"
+        >
             <div className="container mx-auto px-4">
                 <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
                     Proyectos
@@ -73,17 +79,17 @@ const Projects = () => {
                                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                                     <a
                                         href={project.demoLink}
-                                        className="bg-slate-50 font-bold hover:bg-slate-300 text-gray-900 py-2 px-4 rounded-full mx-2 transition duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        className="bg-slate-50 font-bold hover:bg-slate-300 text-gray-900 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Demo
                                     </a>
                                     <a
                                         href={project.codeLink}
-                                        className="border border-slate-50 font-bold hover:bg-slate-50 hover:text-gray-900 text-slate-50 py-2 px-4 rounded-full mx-2 transition duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        className="border border-slate-50 font-bold hover:bg-slate-50 hover:text-gray-900 text-slate-50 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Código
                                     </a>
@@ -91,8 +97,12 @@ const Projects = () => {
                             </div>
                             {/* Contenido del proyecto */}
                             <div className="p-4 flex flex-col">
-                                <h3 className="text-slate-100 text-2xl font-semibold mb-2">{project.title}</h3>
-                                <p className="text-slate-300 mb-4">{project.description}</p>
+                                <h3 className="text-slate-100 text-2xl font-semibold mb-2">
+                                    {project.title}
+                                </h3>
+                                <p className="text-slate-300 mb-4">
+                                    {project.description}
+                                </p>
                                 {/* Logos de tecnologías */}
                                 <div className="flex space-x-4">
                                     {project.technologies.map((tech, techIndex) => (
@@ -100,7 +110,7 @@ const Projects = () => {
                                             key={techIndex}
                                             src={tech}
                                             alt="Technology logo"
-                                            className="w-5 h-5"
+                                            className="w-7 h-7"
                                         />
                                     ))}
                                 </div>

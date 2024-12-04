@@ -30,6 +30,14 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Función para hacer scroll suave a una sección
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <nav className="fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 text-white z-50">
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
@@ -41,6 +49,7 @@ const Navbar = () => {
                 <div className="hidden md:flex space-x-6 items-center">
                     <a
                         href="#hero"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
                         className={`hover:text-slate-300 ${
                             activeSection === "hero" ? "font-bold underline" : ""
                         }`}
@@ -49,6 +58,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#about"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
                         className={`hover:text-slate-300 ${
                             activeSection === "about" ? "font-bold underline" : ""
                         }`}
@@ -57,6 +67,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#skills"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}
                         className={`hover:text-slate-300 ${
                             activeSection === "skills" ? "font-bold underline" : ""
                         }`}
@@ -65,6 +76,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#projects"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
                         className={`hover:text-slate-300 ${
                             activeSection === "projects" ? "font-bold underline" : ""
                         }`}
@@ -73,6 +85,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#Resume"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); }}
                         className={`hover:text-slate-300 ${
                             activeSection === "Resume" ? "font-bold underline" : ""
                         }`}
@@ -81,6 +94,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#contact"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
                         className={`hover:text-slate-300 ${
                             activeSection === "contact" ? "font-bold underline" : ""
                         }`}
@@ -164,6 +178,7 @@ const Navbar = () => {
                 <div className="md:hidden">
                     <a
                         href="#hero"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setIsOpen(false); }}
                         className={`block px-4 py-2 hover:bg-slate-600 ${
                             activeSection === "hero" ? "font-bold underline" : ""
                         }`}
@@ -172,6 +187,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#about"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('about'); setIsOpen(false); }}
                         className={`block px-4 py-2 hover:bg-slate-600 ${
                             activeSection === "about" ? "font-bold underline" : ""
                         }`}
@@ -180,6 +196,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#skills"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('skills'); setIsOpen(false); }}
                         className={`block px-4 py-2 hover:bg-slate-600 ${
                             activeSection === "skills" ? "font-bold underline" : ""
                         }`}
@@ -188,6 +205,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#projects"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('projects'); setIsOpen(false); }}
                         className={`block px-4 py-2 hover:bg-slate-600 ${
                             activeSection === "projects" ? "font-bold underline" : ""
                         }`}
@@ -196,6 +214,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#Resume"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); setIsOpen(false); }}
                         className={`block px-4 py-2 hover:bg-slate-600 ${
                             activeSection === "Resume" ? "font-bold underline" : ""
                         }`}
@@ -204,6 +223,7 @@ const Navbar = () => {
                     </a>
                     <a
                         href="#contact"
+                        onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setIsOpen(false); }}
                         className={`block px-4 py-2 hover:bg-slate-600 ${
                             activeSection === "contact" ? "font-bold underline" : ""
                         }`}

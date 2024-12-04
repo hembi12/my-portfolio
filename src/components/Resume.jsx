@@ -3,7 +3,10 @@ import ResumeImage from "../assets/images/Resume.svg";
 
 const Resume = () => {
     return (
-        <section id="Resume" className="py-20 bg-gradient-to-t from-gray-700 via-gray-900 to-black text-white">
+        <section
+            id="Resume"
+            className="py-20 bg-gradient-to-t from-gray-700 via-gray-900 to-black text-white"
+        >
             <div className="container mx-auto px-4">
                 <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
                     Curriculum
@@ -13,11 +16,11 @@ const Resume = () => {
                     {/* Lado izquierdo: Texto y opciones */}
                     <div className="md:w-1/2 text-center md:text-left flex flex-col justify-center px-4">
                         <p className="text-lg leading-relaxed mb-6">
-                            En esta sección, puedes visualizar mi curriculum o descargarlo
+                            En esta sección, puedes visualizar mi currículum o descargarlo
                             en formato PDF. Este documento detalla mi experiencia profesional,
                             habilidades, educación y más.
                         </p>
-                        <div className="flex justify-center md:justify-start gap-4">
+                        <div className="flex flex-col md:flex-row justify-center md:justify-start gap-4">
                             <a
                                 href="/path/to/visualize-cv"
                                 target="_blank"

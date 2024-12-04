@@ -3,7 +3,10 @@ import AboutImage from "../assets/images/About.svg";
 
 const About = () => {
     return (
-        <section id="about" className="bg-gradient-to-b from-gray-700 via-gray-900 to-black text-slate-100 py-20">
+        <section
+            id="about"
+            className="bg-gradient-to-b from-gray-700 via-gray-900 to-black text-slate-100 py-20"
+        >
             <div className="container mx-auto px-4">
                 <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
                     Sobre mí
@@ -17,7 +20,7 @@ const About = () => {
                             mejorar constantemente mis habilidades en tecnologías como HTML,
                             CSS, JavaScript, y frameworks modernos como React y Tailwind CSS.
                         </p>
-                        <p className="text-lg leading-relaxed">
+                        <p className="text-lg leading-relaxed mb-4">
                             Además de mi amor por la tecnología, me encanta colaborar en
                             equipos y enfrentar nuevos desafíos. Estoy comprometido con
                             construir aplicaciones web eficientes, funcionales y visualmente
