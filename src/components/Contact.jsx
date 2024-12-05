@@ -21,7 +21,7 @@ const Contact = () => {
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
+        setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
     };
 
     const validate = () => {
@@ -62,6 +62,7 @@ const Contact = () => {
                     reply_to: formData.email,
                     subject: formData.subject,
                     message: formData.message,
+                    privacy_consent: formData.privacyConsent ? "Sí" : "No",
                 });
 
                 // Enviar correo al usuario
@@ -71,6 +72,7 @@ const Contact = () => {
                     reply_to: formData.email,
                     subject: formData.subject,
                     message: formData.message,
+                    privacy_consent: formData.privacyConsent ? "Sí" : "No",
                 });
 
                 // Mostrar modal de éxito
@@ -114,8 +116,7 @@ const Contact = () => {
                         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                             <div className="bg-gradient-to-t from-gray-700 via-gray-900 to-black rounded-lg shadow-lg p-6 w-11/12 sm:w-96">
                                 <h2
-                                    className={`text-xl font-bold ${modal.type === "success" ? "text-green-500" : "text-red-500"
-                                        }`}
+                                    className={`text-xl font-bold ${modal.type === "success" ? "text-green-500" : "text-red-500"}`}
                                 >
                                     {modal.type === "success" ? "Éxito" : "Error"}
                                 </h2>
@@ -131,14 +132,6 @@ const Contact = () => {
                             </div>
                         </div>
                     )}
-                    {/* Barra de la ventana estilo Mac */}
-                    <div className="bg-slate-700 flex items-center px-4 py-2">
-                        <div className="flex space-x-2">
-                            <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                            <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                        </div>
-                    </div>
                     <form
                         onSubmit={handleSubmit}
                         className="bg-slate-600 p-8 rounded-b-lg shadow-lg"
