@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
@@ -7,6 +7,8 @@ const Navbar = () => {
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false); // Estado para controlar el dropdown de Lenguaje (mobile)
     const [activeSection, setActiveSection] = useState("");
     const [language, setLanguage] = useState("Español"); // Estado para el idioma seleccionado
+
+    const navbarRef = useRef(null); // Referencia al navbar
 
     // Función para manejar la detección de la sección activa
     const handleScroll = () => {
@@ -38,8 +40,32 @@ const Navbar = () => {
         }
     };
 
+    // Función para manejar clics fuera del navbar
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+                // Si el clic fue fuera del navbar, cierra los menús
+                setIsOpen(false);
+                setDropdownOpen(false);
+                setMobileDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+        // También podemos escuchar eventos de toque para dispositivos móviles
+        document.addEventListener("touchstart", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+            document.removeEventListener("touchstart", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <nav className="fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 text-white z-50">
+        <nav
+            ref={navbarRef} // Asignar la referencia al elemento nav
+            className="fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 text-white z-50"
+        >
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
                 {/* Logo */}
                 <div className="bg-gradient-to-b from-slate-500 via-slate-300 to-white bg-clip-text text-transparent text-2xl font-bold">
