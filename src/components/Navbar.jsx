@@ -1,7 +1,12 @@
+// Navbar.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { useLocation } from "react-router-dom"; // Importa useLocation
 
 const Navbar = () => {
+    const location = useLocation(); // Obtiene la ubicación actual
+    const isPrivacyPolicy = location.pathname === "/privacy-policy"; // Verifica si está en la página de Privacy Policy
+
     const [isOpen, setIsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false); // Estado para controlar el dropdown de Lenguaje (desktop)
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false); // Estado para controlar el dropdown de Lenguaje (mobile)
@@ -12,6 +17,8 @@ const Navbar = () => {
 
     // Función para manejar la detección de la sección activa
     const handleScroll = () => {
+        if (isPrivacyPolicy) return; // No manejar el scroll en la página de Privacy Policy
+
         const sections = ["hero", "about", "skills", "projects", "Resume", "contact"];
         const scrollPosition = window.scrollY;
 
@@ -28,9 +35,11 @@ const Navbar = () => {
     };
 
     useEffect(() => {
+        if (isPrivacyPolicy) return; // No agregar listener si está en Privacy Policy
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [isPrivacyPolicy]);
 
     // Función para hacer scroll suave a una sección
     const scrollToSection = (id) => {
@@ -63,7 +72,7 @@ const Navbar = () => {
 
     return (
         <nav
-            ref={navbarRef} // Asignar la referencia al elemento nav
+            ref={navbarRef}
             className="fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 text-white z-50"
         >
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
@@ -72,135 +81,139 @@ const Navbar = () => {
                     HM
                 </div>
                 {/* Desktop Links */}
-                <div className="hidden md:flex space-x-6 items-center">
-                    <a
-                        href="#hero"
-                        onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
-                        className={`hover:text-slate-300 ${
-                            activeSection === "hero" ? "font-bold underline" : ""
-                        }`}
-                    >
-                        Inicio
-                    </a>
-                    <a
-                        href="#about"
-                        onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                        className={`hover:text-slate-300 ${
-                            activeSection === "about" ? "font-bold underline" : ""
-                        }`}
-                    >
-                        Sobre mí
-                    </a>
-                    <a
-                        href="#skills"
-                        onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}
-                        className={`hover:text-slate-300 ${
-                            activeSection === "skills" ? "font-bold underline" : ""
-                        }`}
-                    >
-                        Habilidades
-                    </a>
-                    <a
-                        href="#projects"
-                        onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
-                        className={`hover:text-slate-300 ${
-                            activeSection === "projects" ? "font-bold underline" : ""
-                        }`}
-                    >
-                        Proyectos
-                    </a>
-                    <a
-                        href="#Resume"
-                        onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); }}
-                        className={`hover:text-slate-300 ${
-                            activeSection === "Resume" ? "font-bold underline" : ""
-                        }`}
-                    >
-                        Curriculum
-                    </a>
-                    <a
-                        href="#contact"
-                        onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                        className={`hover:text-slate-300 ${
-                            activeSection === "contact" ? "font-bold underline" : ""
-                        }`}
-                    >
-                        Contacto
-                    </a>
-                    {/* Lenguaje Dropdown (Desktop) */}
-                    <div className="relative">
-                        <button
-                            onClick={() => setDropdownOpen(!dropdownOpen)}
-                            className={`flex items-center hover:text-slate-300 ${
-                                dropdownOpen ? "font-bold underline" : ""
+                {!isPrivacyPolicy && (
+                    <div className="hidden md:flex space-x-6 items-center">
+                        <a
+                            href="#hero"
+                            onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
+                            className={`hover:text-slate-300 ${
+                                activeSection === "hero" ? "font-bold underline" : ""
                             }`}
                         >
-                            Lenguaje
-                            <FaChevronDown className="ml-2" />
-                        </button>
-                        {dropdownOpen && (
-                            <div className="absolute left-0 mt-2 bg-slate-800 text-white rounded-lg shadow-lg md:w-40 w-auto">
-                                <button
-                                    onClick={() => {
-                                        setLanguage("Español");
-                                        setDropdownOpen(false);
-                                    }}
-                                    className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
-                                >
-                                    <img
-                                        src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
-                                        alt="Mexico"
-                                        className="w-5 h-5 mr-2"
-                                    />
-                                    Español
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        setLanguage("Inglés");
-                                        setDropdownOpen(false);
-                                    }}
-                                    className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
-                                >
-                                    <img
-                                        src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
-                                        alt="USA"
-                                        className="w-5 h-5 mr-2"
-                                    />
-                                    Inglés
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                {/* Mobile Hamburger */}
-                <div className="md:hidden">
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="text-gray-300 focus:outline-none"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                            Inicio
+                        </a>
+                        <a
+                            href="#about"
+                            onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                            className={`hover:text-slate-300 ${
+                                activeSection === "about" ? "font-bold underline" : ""
+                            }`}
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d={
-                                    isOpen
-                                        ? "M6 18L18 6M6 6l12 12"
-                                        : "M4 6h16M4 12h16M4 18h16"
-                                }
-                            />
-                        </svg>
-                    </button>
-                </div>
+                            Sobre mí
+                        </a>
+                        <a
+                            href="#skills"
+                            onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}
+                            className={`hover:text-slate-300 ${
+                                activeSection === "skills" ? "font-bold underline" : ""
+                            }`}
+                        >
+                            Habilidades
+                        </a>
+                        <a
+                            href="#projects"
+                            onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
+                            className={`hover:text-slate-300 ${
+                                activeSection === "projects" ? "font-bold underline" : ""
+                            }`}
+                        >
+                            Proyectos
+                        </a>
+                        <a
+                            href="#Resume"
+                            onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); }}
+                            className={`hover:text-slate-300 ${
+                                activeSection === "Resume" ? "font-bold underline" : ""
+                            }`}
+                        >
+                            Curriculum
+                        </a>
+                        <a
+                            href="#contact"
+                            onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+                            className={`hover:text-slate-300 ${
+                                activeSection === "contact" ? "font-bold underline" : ""
+                            }`}
+                        >
+                            Contacto
+                        </a>
+                        {/* Lenguaje Dropdown (Desktop) */}
+                        <div className="relative">
+                            <button
+                                onClick={() => setDropdownOpen(!dropdownOpen)}
+                                className={`flex items-center hover:text-slate-300 ${
+                                    dropdownOpen ? "font-bold underline" : ""
+                                }`}
+                            >
+                                Lenguaje
+                                <FaChevronDown className="ml-2" />
+                            </button>
+                            {dropdownOpen && (
+                                <div className="absolute left-0 mt-2 bg-slate-800 text-white rounded-lg shadow-lg md:w-40 w-auto">
+                                    <button
+                                        onClick={() => {
+                                            setLanguage("Español");
+                                            setDropdownOpen(false);
+                                        }}
+                                        className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                    >
+                                        <img
+                                            src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
+                                            alt="Mexico"
+                                            className="w-5 h-5 mr-2"
+                                        />
+                                        Español
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            setLanguage("Inglés");
+                                            setDropdownOpen(false);
+                                        }}
+                                        className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                    >
+                                        <img
+                                            src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
+                                            alt="USA"
+                                            className="w-5 h-5 mr-2"
+                                        />
+                                        Inglés
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
+                {/* Mobile Hamburger */}
+                {!isPrivacyPolicy && (
+                    <div className="md:hidden">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-gray-300 focus:outline-none"
+                        >
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d={
+                                        isOpen
+                                            ? "M6 18L18 6M6 6l12 12"
+                                            : "M4 6h16M4 12h16M4 18h16"
+                                    }
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                )}
             </div>
             {/* Mobile Links */}
-            {isOpen && (
+            {!isPrivacyPolicy && isOpen && (
                 <div className="md:hidden">
                     <a
                         href="#hero"

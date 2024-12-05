@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Importa Link para navegación
 
 const PrivacyPolicy = () => {
     return (
@@ -49,6 +50,10 @@ const PrivacyPolicy = () => {
                     <p className="mt-6">
                         Si tienes dudas, contáctanos en <strong>correo@ejemplo.com</strong>.
                     </p>
+                    {/* Enlace para volver al inicio */}
+                    <Link to="/" className="text-blue-500 underline mt-4 block">
+                        Volver al inicio
+                    </Link>
                 </div>
             </div>
         </section>
