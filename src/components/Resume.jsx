@@ -25,14 +25,14 @@ const Resume = () => {
                                 href="/path/to/visualize-cv"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="bg-slate-50 text-gray-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
+                                className="bg-slate-50 text-slate-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
                             >
                                 Ver Curriculum
                             </a>
                             <a
                                 href="/path/to/download-cv.pdf"
                                 download
-                                className="border border-slate-50 text-slate-50 px-6 py-2 rounded-full font-bold hover:bg-slate-50 hover:text-gray-900 transition duration-300"
+                                className="border border-slate-50 text-slate-50 px-6 py-2 rounded-full font-bold hover:bg-slate-50 hover:text-slate-900 transition duration-300"
                             >
                                 Descargar
                             </a>

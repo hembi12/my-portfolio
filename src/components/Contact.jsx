@@ -10,7 +10,13 @@ const Contact = () => {
     });
 
     const [errors, setErrors] = useState({});
-    const [successMessage, setSuccessMessage] = useState("");
+    const [modal, setModal] = useState({
+        show: false,
+        type: "", // "success" o "error"
+        message: "",
+    });
+
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,54 +43,53 @@ const Contact = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const sendEmail = async (serviceId, templateId, variables) => {
+        return emailjs.send(serviceId, templateId, variables, "p7oaquBSPoB6KaSr_");
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (validate()) {
-            // Enviar correo a ti (administrador)
-            emailjs
-                .send(
-                    "service_gziqjel",
-                    "template_5p4lqb8", // Template para ti
-                    {
-                        from_name: formData.name,
-                        reply_to: formData.email,
-                        subject: formData.subject,
-                        message: formData.message,
-                    },
-                    "p7oaquBSPoB6KaSr_"
-                )
-                .then(() => {
-                    console.log("Correo enviado a administrador.");
-                })
-                .catch((error) => {
-                    console.error("Error al enviar el correo al administrador:", error);
+            setLoading(true);
+            try {
+                // Enviar correo al administrador
+                await sendEmail("service_gziqjel", "template_5p4lqb8", {
+                    from_name: formData.name,
+                    reply_to: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
                 });
 
-            // Enviar correo al usuario
-            emailjs
-                .send(
-                    "service_gziqjel",
-                    "template_7snt4z8", // Template para el usuario
-                    {
-                        from_name: formData.name, // Tu nombre o el nombre de tu empresa
-                        to_name: formData.name,
-                        reply_to: formData.email,
-                        subject: formData.subject,
-                        message: formData.message,
-                    },
-                    "p7oaquBSPoB6KaSr_"
-                )
-                .then(() => {
-                    setSuccessMessage(
-                        "Formulario enviado correctamente. Hemos enviado una confirmación a tu correo."
-                    );
-                    setFormData({ name: "", email: "", subject: "", message: "" });
-                    setErrors({});
-                })
-                .catch((error) => {
-                    console.error("Error al enviar el correo al usuario:", error);
-                    alert("Hubo un error al enviar la confirmación. Intenta nuevamente.");
+                // Enviar correo al usuario
+                await sendEmail("service_gziqjel", "template_7snt4z8", {
+                    from_name: formData.name,
+                    to_name: formData.name,
+                    reply_to: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
                 });
+
+                // Mostrar modal de éxito
+                setModal({
+                    show: true,
+                    type: "success",
+                    message: "Formulario enviado correctamente. Hemos enviado una confirmación a tu correo.",
+                });
+
+                // Limpiar formulario
+                setFormData({ name: "", email: "", subject: "", message: "" });
+                setErrors({});
+            } catch (error) {
+                console.error("Error al enviar el formulario:", error);
+                // Mostrar modal de error
+                setModal({
+                    show: true,
+                    type: "error",
+                    message: "Hubo un error al enviar el formulario. Por favor, inténtalo nuevamente.",
+                });
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
@@ -98,16 +103,42 @@ const Contact = () => {
                     Contáctame
                 </h2>
                 <p className="text-center text-lg mb-12">
-                    Si tienes alguna pregunta o propuesta, no dudes en enviarme un mensaje a
-                    través del formulario de contacto.
+                    Si tienes alguna pregunta o propuesta, no dudes en enviarme un mensaje a través del formulario de contacto.
                 </p>
                 <div className="max-w-2xl mx-auto">
-                    {successMessage && (
-                        <p className="text-green-500 text-center mb-4">{successMessage}</p>
+                    {modal.show && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                            <div className="bg-gradient-to-t from-gray-700 via-gray-900 to-black rounded-lg shadow-lg p-6 w-11/12 sm:w-96">
+                                <h2
+                                    className={`text-xl font-bold ${
+                                        modal.type === "success" ? "text-green-500" : "text-red-500"
+                                    }`}
+                                >
+                                    {modal.type === "success" ? "Éxito" : "Error"}
+                                </h2>
+                                <p className="text-slate-100 mt-4">{modal.message}</p>
+                                <div className="mt-6 text-center">
+                                    <button
+                                        onClick={() => setModal({ ...modal, show: false })}
+                                        className="bg-slate-50 text-slate-900 px-4 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
+                                    >
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     )}
+                    {/* Barra de la ventana estilo Mac */}
+                    <div className="bg-slate-700 flex items-center px-4 py-2">
+                        <div className="flex space-x-2">
+                            <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                        </div>
+                    </div>
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-slate-600 p-8 rounded-lg shadow-lg"
+                        className="bg-slate-600 p-8 rounded-b-lg shadow-lg"
                     >
                         {/* Nombre */}
                         <div className="mb-6">
@@ -202,9 +233,10 @@ const Contact = () => {
                         <div className="text-center">
                             <button
                                 type="submit"
-                                className="bg-slate-50 text-gray-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
+                                className="bg-slate-50 text-slate-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
+                                disabled={loading}
                             >
-                                Enviar Mensaje
+                                {loading ? "Enviando..." : "Enviar Mensaje"}
                             </button>
                         </div>
                     </form>

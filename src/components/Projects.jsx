@@ -81,7 +81,7 @@ const Projects = () => {
                                         href={project.demoLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="bg-slate-50 font-bold hover:bg-slate-300 text-gray-900 py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="bg-slate-50 font-bold hover:bg-slate-300 text-slate-900 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Demo
                                     </a>
@@ -89,7 +89,7 @@ const Projects = () => {
                                         href={project.codeLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="border border-slate-50 font-bold hover:bg-slate-50 hover:text-gray-900 text-slate-50 py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="border border-slate-50 font-bold hover:bg-slate-50 hover:text-slate-900 text-slate-50 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Código
                                     </a>
