@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const Contact = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const [successMessage, setSuccessMessage] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,8 +40,51 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            alert("Formulario enviado correctamente.");
-            // Aquí puedes manejar el envío real del formulario
+            // Enviar correo a ti (administrador)
+            emailjs
+                .send(
+                    "service_gziqjel",
+                    "template_5p4lqb8", // Template para ti
+                    {
+                        from_name: formData.name,
+                        reply_to: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                    },
+                    "p7oaquBSPoB6KaSr_"
+                )
+                .then(() => {
+                    console.log("Correo enviado a administrador.");
+                })
+                .catch((error) => {
+                    console.error("Error al enviar el correo al administrador:", error);
+                });
+
+            // Enviar correo al usuario
+            emailjs
+                .send(
+                    "service_gziqjel",
+                    "template_7snt4z8", // Template para el usuario
+                    {
+                        from_name: formData.name, // Tu nombre o el nombre de tu empresa
+                        to_name: formData.name,
+                        reply_to: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                    },
+                    "p7oaquBSPoB6KaSr_"
+                )
+                .then(() => {
+                    setSuccessMessage(
+                        "Formulario enviado correctamente. Hemos enviado una confirmación a tu correo."
+                    );
+                    setFormData({ name: "", email: "", subject: "", message: "" });
+                    setErrors({});
+                })
+                .catch((error) => {
+                    console.error("Error al enviar el correo al usuario:", error);
+                    alert("Hubo un error al enviar la confirmación. Intenta nuevamente.");
+                });
         }
     };
 
@@ -57,14 +102,12 @@ const Contact = () => {
                     través del formulario de contacto.
                 </p>
                 <div className="max-w-2xl mx-auto">
-                    <div className="bg-slate-700 rounded-t-lg px-4 py-2 flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                        <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                        <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                    </div>
+                    {successMessage && (
+                        <p className="text-green-500 text-center mb-4">{successMessage}</p>
+                    )}
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-slate-600 p-8 rounded-b-lg shadow-lg"
+                        className="bg-slate-600 p-8 rounded-lg shadow-lg"
                     >
                         {/* Nombre */}
                         <div className="mb-6">
