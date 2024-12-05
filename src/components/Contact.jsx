@@ -7,6 +7,7 @@ const Contact = () => {
         email: "",
         subject: "",
         message: "",
+        privacyConsent: false,
     });
 
     const [errors, setErrors] = useState({});
@@ -19,8 +20,8 @@ const Contact = () => {
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type, checked } = e.target;
+        setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
     };
 
     const validate = () => {
@@ -38,6 +39,9 @@ const Contact = () => {
         }
         if (!formData.message.trim()) {
             newErrors.message = "El mensaje no puede estar vacío.";
+        }
+        if (!formData.privacyConsent) {
+            newErrors.privacyConsent = "Debes aceptar la Política de Privacidad.";
         }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -77,7 +81,7 @@ const Contact = () => {
                 });
 
                 // Limpiar formulario
-                setFormData({ name: "", email: "", subject: "", message: "" });
+                setFormData({ name: "", email: "", subject: "", message: "", privacyConsent: false });
                 setErrors({});
             } catch (error) {
                 console.error("Error al enviar el formulario:", error);
@@ -235,7 +239,8 @@ const Contact = () => {
                                     type="checkbox"
                                     name="privacyConsent"
                                     className="mr-2 rounded"
-                                    required
+                                    checked={formData.privacyConsent}
+                                    onChange={handleChange}
                                 />
                                 <span className="text-slate-100 text-sm">
                                     Acepto la{" "}
@@ -244,6 +249,9 @@ const Contact = () => {
                                     </a>.
                                 </span>
                             </label>
+                            {errors.privacyConsent && (
+                                <p className="text-red-500 text-sm">{errors.privacyConsent}</p>
+                            )}
                         </div>
                         {/* Botón Enviar Mensaje */}
                         <div className="text-center">
