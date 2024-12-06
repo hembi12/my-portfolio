@@ -12,6 +12,7 @@ const Navbar = () => {
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("");
     const [language, setLanguage] = useState("Español");
+    const [scrolled, setScrolled] = useState(false); // Nuevo estado para controlar opacidad
 
     const navbarRef = useRef(null);
 
@@ -61,10 +62,28 @@ const Navbar = () => {
         };
     }, []);
 
+    // Nuevo efecto para cambiar la opacidad del navbar al hacer scroll
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, []);
+
     return (
         <nav
             ref={navbarRef}
-            className="fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 text-white z-50"
+            className={`fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur 
+            ${scrolled ? 'bg-opacity-10' : 'bg-opacity-0'} 
+            backdrop-saturate-100 backdrop-contrast-100 text-white z-50 transition-opacity duration-300`}
         >
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
                 <div className="bg-gradient-to-b from-slate-500 via-slate-300 to-white bg-clip-text text-transparent text-2xl font-bold">
@@ -135,7 +154,7 @@ const Navbar = () => {
                         <div className="md:hidden">
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-gray-300 focus:outline-none"
+                                className="text-slate-300 focus:outline-none"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -262,7 +281,7 @@ const Navbar = () => {
                         <div className="md:hidden">
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-gray-300 focus:outline-none"
+                                className="text-slate-300 focus:outline-none"
                             >
                                 <svg
                                     className="w-6 h-6"

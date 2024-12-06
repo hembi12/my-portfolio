@@ -26,6 +26,7 @@ const PrivacyPolicy = () => {
                             <li>Nombre completo</li>
                             <li>Correo electrónico</li>
                             <li>Asunto y contenido del mensaje enviado a través de nuestro formulario de contacto</li>
+                            <li>Aceptación de la politica de privacidad</li>
                         </ul>
                     </div>
 
