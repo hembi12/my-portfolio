@@ -45,7 +45,8 @@ const Hero = () => {
             className="bg-[#f5f4f7] text-white h-screen flex flex-col justify-center items-center relative"
         >
             <div className="container mx-auto px-4 text-center">
-                <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight">
+                <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight"
+                >
                     Héctor Martil
                 </h1>
                 {/* Palabras animadas */}
