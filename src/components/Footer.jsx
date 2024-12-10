@@ -15,7 +15,7 @@ const Footer = () => {
                         href="https://github.com/hembi12"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-gray-700 transition duration-300"
+                        className="text-blue-600 hover:text-blue-500 transition duration-300"
                     >
                         <FaGithub size={28} />
                     </a>
@@ -23,7 +23,7 @@ const Footer = () => {
                         href="https://www.linkedin.com/in/hectormartil/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-gray-700 transition duration-300"
+                        className="text-blue-600 hover:text-blue-500 transition duration-300"
                     >
                         <FaLinkedin size={28} />
                     </a>

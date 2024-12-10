@@ -59,10 +59,10 @@ const Projects = () => {
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className="bg-gray-300 rounded-lg shadow-xl flex flex-col overflow-hidden group"
+                            className="bg-gray-200 rounded-lg shadow-xl flex flex-col overflow-hidden group"
                         >
                             {/* Barra de la ventana estilo Mac */}
-                            <div className="bg-gray-400 flex items-center px-4 py-2">
+                            <div className="bg-gray-300 flex items-center px-4 py-2">
                                 <div className="flex space-x-2">
                                     <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                                     <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -81,7 +81,7 @@ const Projects = () => {
                                         href={project.demoLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="bg-blue-500 font-bold hover:bg-blue-600 text-white py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="bg-blue-600 font-bold hover:bg-blue-500 text-white py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Demo
                                     </a>
@@ -89,7 +89,7 @@ const Projects = () => {
                                         href={project.codeLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="border border-blue-500 font-bold hover:bg-blue-600 hover:text-white text-blue-500 py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="border border-blue-600 font-bold hover:bg-blue-600 hover:text-white text-blue-600 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Código
                                     </a>

@@ -133,7 +133,7 @@ const Contact = () => {
                         </div>
                     )}
                     {/* Barra de la ventana estilo Mac */}
-                    <div className="bg-gray-400 flex items-center px-4 py-2">
+                    <div className="bg-gray-300 flex items-center px-4 py-2">
                         <div className="flex space-x-2">
                             <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -142,7 +142,7 @@ const Contact = () => {
                     </div>
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-gray-300 p-8 rounded-b-lg shadow-lg"
+                        className="bg-gray-200 p-8 rounded-b-lg shadow-xl"
                     >
                         {/* Nombre */}
                         <div className="mb-6">
@@ -156,7 +156,7 @@ const Contact = () => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full bg-gray-200 text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Escribe tu nombre"
                                 value={formData.name}
                                 onChange={handleChange}
@@ -177,7 +177,7 @@ const Contact = () => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full bg-gray-200 text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Escribe tu correo"
                                 value={formData.email}
                                 onChange={handleChange}
@@ -197,7 +197,7 @@ const Contact = () => {
                             <select
                                 id="subject"
                                 name="subject"
-                                className="w-full bg-gray-200 text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value={formData.subject}
                                 onChange={handleChange}
                             >
@@ -224,7 +224,7 @@ const Contact = () => {
                                 id="message"
                                 name="message"
                                 rows="5"
-                                className="w-full bg-gray-200 text-white border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] text-white border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Escribe tu mensaje..."
                                 value={formData.message}
                                 onChange={handleChange}
@@ -258,7 +258,7 @@ const Contact = () => {
                         <div className="text-center">
                             <button
                                 type="submit"
-                                className="bg-blue-500 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-600 transition duration-300"
+                                className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
                                 disabled={loading}
                             >
                                 {loading ? "Enviando..." : "Enviar Mensaje"}
