@@ -102,10 +102,10 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-white"
+            className="py-20 bg-[#f5f4f7] text-gray-600"
         >
             <div className="container mx-auto px-4">
-                <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
+                <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
                     Contáctame
                 </h2>
                 <p className="text-center text-lg mb-12">
@@ -114,7 +114,7 @@ const Contact = () => {
                 <div className="max-w-2xl mx-auto">
                     {modal.show && (
                         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                            <div className="bg-gradient-to-t from-gray-700 via-gray-900 to-black rounded-lg shadow-lg p-6 w-11/12 sm:w-96">
+                            <div className="bg-gray-300 rounded-lg shadow-lg p-6 w-11/12 sm:w-96">
                                 <h2
                                     className={`text-xl font-bold ${modal.type === "success" ? "text-green-500" : "text-red-500"}`}
                                 >
@@ -133,7 +133,7 @@ const Contact = () => {
                         </div>
                     )}
                     {/* Barra de la ventana estilo Mac */}
-                    <div className="bg-slate-700 flex items-center px-4 py-2">
+                    <div className="bg-gray-400 flex items-center px-4 py-2">
                         <div className="flex space-x-2">
                             <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -142,22 +142,22 @@ const Contact = () => {
                     </div>
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-slate-600 p-8 rounded-b-lg shadow-lg"
+                        className="bg-gray-300 p-8 rounded-b-lg shadow-lg"
                     >
                         {/* Nombre */}
                         <div className="mb-6">
                             <label
                                 htmlFor="name"
-                                className="block text-slate-100 text-lg font-semibold mb-2"
+                                className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Nombre
+                                Nombre:
                             </label>
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full bg-slate-800 text-white border border-slate-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-slate-100"
-                                placeholder="Sergio Pérez"
+                                className="w-full bg-gray-200 text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Escribe tu nombre"
                                 value={formData.name}
                                 onChange={handleChange}
                             />
@@ -169,16 +169,16 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="email"
-                                className="block text-slate-100 text-lg font-semibold mb-2"
+                                className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Correo Electrónico
+                                Correo Electrónico:
                             </label>
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full bg-slate-800 text-white border border-slate-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-slate-100"
-                                placeholder="tu_correo@ejemplo.com"
+                                className="w-full bg-gray-200 text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Escribe tu correo"
                                 value={formData.email}
                                 onChange={handleChange}
                             />
@@ -190,14 +190,14 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="subject"
-                                className="block text-slate-100 text-lg font-semibold mb-2"
+                                className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Asunto
+                                Asunto:
                             </label>
                             <select
                                 id="subject"
                                 name="subject"
-                                className="w-full bg-slate-800 text-white border border-slate-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-slate-100"
+                                className="w-full bg-gray-200 text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value={formData.subject}
                                 onChange={handleChange}
                             >
@@ -216,16 +216,16 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="message"
-                                className="block text-slate-100 text-lg font-semibold mb-2"
+                                className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Mensaje
+                                Mensaje:
                             </label>
                             <textarea
                                 id="message"
                                 name="message"
                                 rows="5"
-                                className="w-full bg-slate-800 text-white border border-slate-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-slate-100"
-                                placeholder="Ejemplo de mensaje..."
+                                className="w-full bg-gray-200 text-white border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Escribe tu mensaje..."
                                 value={formData.message}
                                 onChange={handleChange}
                             ></textarea>
@@ -243,9 +243,9 @@ const Contact = () => {
                                     checked={formData.privacyConsent}
                                     onChange={handleChange}
                                 />
-                                <span className="text-slate-100 text-sm">
+                                <span className="text-gray-600 text-sm">
                                     Acepto la{" "}
-                                    <a href="/privacy-policy" className="underline text-slate-100 hover:text-slate-300">
+                                    <a href="/privacy-policy" className="underline text-blue-500 hover:text-blue-600">
                                         Política de Privacidad
                                     </a>.
                                 </span>
@@ -258,7 +258,7 @@ const Contact = () => {
                         <div className="text-center">
                             <button
                                 type="submit"
-                                className="bg-slate-50 text-slate-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
+                                className="bg-blue-500 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-600 transition duration-300"
                                 disabled={loading}
                             >
                                 {loading ? "Enviando..." : "Enviar Mensaje"}

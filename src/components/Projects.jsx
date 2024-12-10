@@ -46,10 +46,10 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-slate-100"
+            className="py-20 bg-[#f5f4f7] text-gray-600"
         >
             <div className="container mx-auto px-4">
-                <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
+                <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
                     Proyectos
                 </h2>
                 <p className="text-center text-lg mb-12">
@@ -59,10 +59,10 @@ const Projects = () => {
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className="bg-slate-600 rounded-lg shadow-lg flex flex-col overflow-hidden group"
+                            className="bg-gray-300 rounded-lg shadow-xl flex flex-col overflow-hidden group"
                         >
                             {/* Barra de la ventana estilo Mac */}
-                            <div className="bg-slate-700 flex items-center px-4 py-2">
+                            <div className="bg-gray-400 flex items-center px-4 py-2">
                                 <div className="flex space-x-2">
                                     <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                                     <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -81,7 +81,7 @@ const Projects = () => {
                                         href={project.demoLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="bg-slate-50 font-bold hover:bg-slate-300 text-slate-900 py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="bg-blue-500 font-bold hover:bg-blue-600 text-white py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Demo
                                     </a>
@@ -89,7 +89,7 @@ const Projects = () => {
                                         href={project.codeLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="border border-slate-50 font-bold hover:bg-slate-50 hover:text-slate-900 text-slate-50 py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="border border-blue-500 font-bold hover:bg-blue-600 hover:text-white text-blue-500 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
                                         Ver Código
                                     </a>
@@ -97,10 +97,10 @@ const Projects = () => {
                             </div>
                             {/* Contenido del proyecto */}
                             <div className="p-4 flex flex-col">
-                                <h3 className="text-slate-100 text-2xl font-semibold mb-2">
+                                <h3 className="text-gray-600 text-2xl font-semibold mb-2">
                                     {project.title}
                                 </h3>
-                                <p className="text-slate-300 mb-4">
+                                <p className="text-gray-600 mb-4">
                                     {project.description}
                                 </p>
                                 {/* Logos de tecnologías */}

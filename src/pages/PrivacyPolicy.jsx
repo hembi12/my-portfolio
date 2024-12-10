@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const PrivacyPolicy = () => {
     return (
-        <section className="py-20 bg-gradient-to-b from-gray-700 via-gray-900 to-black text-white">
+        <section className="py-20 bg-[#f5f4f7] text-gray-600">
             <div className="container mx-auto px-4">
                 {/* Solo el título */}
                 <div className="mb-8">
-                    <h1 className="text-4xl sm:text-5xl font-bold">
+                    <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold">
                         Política de Privacidad
                     </h1>
                 </div>
@@ -77,7 +77,7 @@ const PrivacyPolicy = () => {
                     {/* Botón centrado */}
                     <div className="text-center mt-6">
                         <Link to="/">
-                            <button className="bg-slate-50 text-slate-900 px-6 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300">
+                            <button className="bg-blue-500 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 transition duration-300">
                                 Regresar
                             </button>
                         </Link>

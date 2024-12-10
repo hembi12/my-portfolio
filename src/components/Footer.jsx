@@ -3,10 +3,10 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="py-8 bg-gradient-to-t from-gray-800 via-gray-900 to-black text-slate-100">
+        <footer className="py-8 bg-[#f5f4f7] text-gray-600">
             <div className="container mx-auto px-4 text-center">
                 {/* Derechos reservados */}
-                <div className="text-sm text-slate-100">
+                <div className="text-sm text-gray-600">
                     © {new Date().getFullYear()} Héctor Martil. Todos los derechos reservados.
                 </div>
                 {/* Redes sociales */}
@@ -15,7 +15,7 @@ const Footer = () => {
                         href="https://github.com/hembi12"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-50 hover:text-slate-300 transition duration-300"
+                        className="text-gray-600 hover:text-gray-700 transition duration-300"
                     >
                         <FaGithub size={28} />
                     </a>
@@ -23,7 +23,7 @@ const Footer = () => {
                         href="https://www.linkedin.com/in/hectormartil/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-50 hover:text-slate-300 transition duration-300"
+                        className="text-gray-600 hover:text-gray-700 transition duration-300"
                     >
                         <FaLinkedin size={28} />
                     </a>

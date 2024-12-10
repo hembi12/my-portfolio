@@ -4,10 +4,10 @@ const Skills = () => {
     return (
         <section
             id="skills"
-            className="py-20 bg-gradient-to-t from-gray-700 via-gray-900 to-black text-slate-100"
+            className="py-20 bg-[#f5f4f7] text-gray-600"
         >
             <div className="container mx-auto px-4">
-                <h2 className="text-slate-100 text-4xl sm:text-5xl font-bold text-center mb-8">
+                <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
                     Habilidades
                 </h2>
                 <p className="text-center text-lg mb-12">
@@ -73,7 +73,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
                             alt="GitHub"
-                            className="w-14 h-14 filter invert transition-transform duration-300 ease-in-out hover:scale-110"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">GitHub</h3>
                     </div>
@@ -91,7 +91,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
                             alt="Express.js"
-                            className="w-14 h-14 filter invert transition-transform duration-300 ease-in-out hover:scale-110"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Express.js</h3>
                     </div>

@@ -81,12 +81,12 @@ const Navbar = () => {
     return (
         <nav
             ref={navbarRef}
-            className={`fixed top-0 left-0 w-full bg-zinc-500 bg-clip-padding backdrop-filter backdrop-blur 
+            className={`fixed top-0 left-0 w-full bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur 
             ${scrolled ? 'bg-opacity-10' : 'bg-opacity-0'} 
-            backdrop-saturate-100 backdrop-contrast-100 text-white z-50 transition-opacity duration-300`}
+            backdrop-saturate-100 backdrop-contrast-100 text-gray-700 z-50 transition-opacity duration-300`}
         >
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
-                <div className="bg-gradient-to-b from-slate-500 via-slate-300 to-white bg-clip-text text-transparent text-2xl font-bold">
+                <div className="bg-gradient-to-b from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-2xl font-bold">
                     HM
                 </div>
                 {isPrivacyPolicy && (
@@ -96,12 +96,12 @@ const Navbar = () => {
                                 e.preventDefault();
                                 window.history.back();
                             }}
-                            className="hover:text-slate-300 cursor-pointer bg-transparent border-none p-0"
+                            className="hover:text-blue-500 hover:font-bold cursor-pointer bg-transparent border-none p-0"
                         >
                             Regresar
                         </button>
                         <span>/</span>
-                        <span className="underline font-bold">Privacy Policy</span>
+                        <span className="text-blue-500 underline font-bold">Privacy Policy</span>
                     </div>
                 )}
                 {isPrivacyPolicy ? (
@@ -110,21 +110,21 @@ const Navbar = () => {
                             <div className="relative">
                                 <button
                                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                                    className={`flex items-center hover:text-slate-300 ${
-                                        dropdownOpen ? "font-bold underline" : ""
+                                    className={`flex items-center hover:text-blue-500 ${
+                                        dropdownOpen ? "text-blue-500 font-bold underline" : ""
                                     }`}
                                 >
                                     Lenguaje
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 bg-slate-800 text-white rounded-lg shadow-lg md:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 bg-[#f5f4f7] text-gray-600 rounded-lg shadow-lg md:w-40 w-auto">
                                         <button
                                             onClick={() => {
                                                 setLanguage("Español");
                                                 setDropdownOpen(false);
                                             }}
-                                            className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 hover:text-blue-500 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -138,7 +138,7 @@ const Navbar = () => {
                                                 setLanguage("Inglés");
                                                 setDropdownOpen(false);
                                             }}
-                                            className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 hover:text-blue-500 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -183,8 +183,8 @@ const Navbar = () => {
                             <a
                                 href="#hero"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
-                                className={`hover:text-slate-300 ${
-                                    activeSection === "hero" ? "font-bold underline" : ""
+                                className={`hover:text-blue-500 ${
+                                    activeSection === "hero" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
                                 Inicio
@@ -192,8 +192,8 @@ const Navbar = () => {
                             <a
                                 href="#about"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                                className={`hover:text-slate-300 ${
-                                    activeSection === "about" ? "font-bold underline" : ""
+                                className={`hover:text-blue-500 ${
+                                    activeSection === "about" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
                                 Sobre mí
@@ -201,8 +201,8 @@ const Navbar = () => {
                             <a
                                 href="#skills"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}
-                                className={`hover:text-slate-300 ${
-                                    activeSection === "skills" ? "font-bold underline" : ""
+                                className={`hover:text-blue-500 ${
+                                    activeSection === "skills" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
                                 Habilidades
@@ -210,8 +210,8 @@ const Navbar = () => {
                             <a
                                 href="#projects"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
-                                className={`hover:text-slate-300 ${
-                                    activeSection === "projects" ? "font-bold underline" : ""
+                                className={`hover:text-blue-500 ${
+                                    activeSection === "projects" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
                                 Proyectos
@@ -219,8 +219,8 @@ const Navbar = () => {
                             <a
                                 href="#Resume"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); }}
-                                className={`hover:text-slate-300 ${
-                                    activeSection === "Resume" ? "font-bold underline" : ""
+                                className={`hover:text-blue-500 ${
+                                    activeSection === "Resume" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
                                 Curriculum
@@ -228,8 +228,8 @@ const Navbar = () => {
                             <a
                                 href="#contact"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                                className={`hover:text-slate-300 ${
-                                    activeSection === "contact" ? "font-bold underline" : ""
+                                className={`hover:text-blue-500 ${
+                                    activeSection === "contact" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
                                 Contacto
@@ -237,21 +237,21 @@ const Navbar = () => {
                             <div className="relative">
                                 <button
                                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                                    className={`flex items-center hover:text-slate-300 ${
-                                        dropdownOpen ? "font-bold underline" : ""
+                                    className={`flex items-center hover:text-blue-500 ${
+                                        dropdownOpen ? "text-blue-500 font-bold underline" : ""
                                     }`}
                                 >
                                     Lenguaje
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 bg-slate-800 text-white rounded-lg shadow-lg md:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 bg-[#f5f4f7] text-gray-600 rounded-lg shadow-lg md:w-40 w-auto">
                                         <button
                                             onClick={() => {
                                                 setLanguage("Español");
                                                 setDropdownOpen(false);
                                             }}
-                                            className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:text-blue-500 hover:bg-gray-200 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -265,7 +265,7 @@ const Navbar = () => {
                                                 setLanguage("Inglés");
                                                 setDropdownOpen(false);
                                             }}
-                                            className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:text-blue-500 hover:bg-gray-200 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -312,7 +312,7 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                            className="block px-4 py-2 hover:bg-slate-600 flex items-center justify-between w-full"
+                            className="block px-4 py-2 hover:bg-blue-500 flex items-center justify-between w-full"
                         >
                             Lenguaje
                             <FaChevronDown className="ml-2" />
@@ -324,7 +324,7 @@ const Navbar = () => {
                                         setLanguage("Español");
                                         setMobileDropdownOpen(false);
                                     }}
-                                    className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -338,7 +338,7 @@ const Navbar = () => {
                                         setLanguage("Inglés");
                                         setMobileDropdownOpen(false);
                                     }}
-                                    className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -424,7 +424,7 @@ const Navbar = () => {
                                         setLanguage("Español");
                                         setMobileDropdownOpen(false);
                                     }}
-                                    className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-blue-500 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -438,7 +438,7 @@ const Navbar = () => {
                                         setLanguage("Inglés");
                                         setMobileDropdownOpen(false);
                                     }}
-                                    className="flex items-center px-4 py-2 hover:bg-slate-600 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-blue-500 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"

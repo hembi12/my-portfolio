@@ -1,31 +1,40 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Resume from "./components/Resume";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import PrivacyPolicy from "./pages/PrivacyPolicy"; // Importa la página de Política de Privacidad
+
+const Navbar = lazy(() => import("./components/Navbar"));
+const Hero = lazy(() => import("./components/Hero"));
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Resume = lazy(() => import("./components/Resume"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy")); // También se carga de forma diferida
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Resume />
-          <Contact />
-        </>} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      </Routes>
-      <Footer />
+      {/* Suspense muestra "Cargando..." mientras se cargan los componentes */}
+      <Suspense fallback={<div>Cargando...</div>}>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <About />
+                <Skills />
+                <Projects />
+                <Resume />
+                <Contact />
+              </>
+            }
+          />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Routes>
+        <Footer />
+      </Suspense>
     </Router>
   );
 }
