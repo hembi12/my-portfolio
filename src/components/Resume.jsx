@@ -24,7 +24,7 @@ const Resume = () => {
                         </p>
                         <div className="flex flex-col md:flex-row justify-center md:justify-start gap-4">
                             <a
-                                href="/path/to/visualize-cv"
+                                href="/assets/CV/Hector_Martil_CV.pdf" // Ruta correcta para visualizar el PDF
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
@@ -32,8 +32,8 @@ const Resume = () => {
                                 {t('viewResume')}
                             </a>
                             <a
-                                href="/path/to/download-cv.pdf"
-                                download
+                                href="/assets/CV/Hector_Martil_CV.pdf" // Ruta correcta para descargar el PDF
+                                download="Hector_Martil_CV.pdf"
                                 className="border border-blue-600 text-blue-600 px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white transition duration-300"
                             >
                                 {t('downloadResume')}
