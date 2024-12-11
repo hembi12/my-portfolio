@@ -67,7 +67,7 @@
     "privacyPolicySection5Description": "We reserve the right to update this privacy policy. Any changes will be posted on this page.",
     "privacyPolicyFinalParagraph": "If you have any questions, contact us at <strong>correo@ejemplo.com</strong>.",
     "backButton": "Go Back",
-    "checkboxLabel": "I accept the <0>Privacy Policy</0>.",
+    "checkboxLabel": "I accept the <1>Privacy Policy</1>.",
     "validation": {
         "nameRequired": "Name is required.",
         "emailRequired": "Email is required.",

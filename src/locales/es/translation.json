@@ -67,7 +67,7 @@
     "privacyPolicySection5Description": "Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será publicado en esta página.",
     "privacyPolicyFinalParagraph": "Si tienes dudas, contáctanos en <strong>correo@ejemplo.com</strong>.",
     "backButton": "Regresar",
-    "checkboxLabel": "Acepto la <0>Política de Privacidad</0>.",
+    "checkboxLabel": "Acepto la <1>Política de Privacidad</1>.",
     "validation": {
         "nameRequired": "El nombre es obligatorio.",
         "emailRequired": "El correo electrónico es obligatorio.",

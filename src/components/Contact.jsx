@@ -249,7 +249,9 @@ const Contact = () => {
                                 <span className="text-gray-600 text-sm">
                                     <Trans
                                         i18nKey="checkboxLabel"
-                                        components={[<a href="/privacy-policy" className="underline text-blue-500 hover:text-blue-600" />]}
+                                        components={{
+                                            1: <a href="/privacy-policy" className="underline text-blue-500 hover:text-blue-600" />
+                                        }}
                                     />
                                 </span>
                             </label>
