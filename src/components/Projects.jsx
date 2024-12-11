@@ -1,11 +1,14 @@
+// Projects.jsx
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
+    const { t } = useTranslation();
+
     const projects = [
         {
-            title: "E-Commerce",
-            description:
-                "Plataforma de comercio electrónico con carrito de compras y sistema de pago integrado.",
+            title: t('project1Title'),
+            description: t('project1Description'),
             image: "https://via.placeholder.com/300",
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -16,9 +19,8 @@ const Projects = () => {
             codeLink: "#",
         },
         {
-            title: "Portfolio",
-            description:
-                "Sitio web personal diseñado para mostrar mis proyectos y habilidades.",
+            title: t('project2Title'),
+            description: t('project2Description'),
             image: "https://via.placeholder.com/300",
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -29,9 +31,8 @@ const Projects = () => {
             codeLink: "#",
         },
         {
-            title: "Blog",
-            description:
-                "Aplicación de blog con autenticación de usuarios y sistema de comentarios.",
+            title: t('project3Title'),
+            description: t('project3Description'),
             image: "https://via.placeholder.com/300",
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
@@ -50,10 +51,10 @@ const Projects = () => {
         >
             <div className="container mx-auto px-4">
                 <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
-                    Proyectos
+                    {t('projects')}
                 </h2>
                 <p className="text-center text-lg mb-12">
-                    Aquí puedes explorar algunos de mis proyectos destacados:
+                    {t('projectsDescription')}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
@@ -83,7 +84,7 @@ const Projects = () => {
                                         rel="noopener noreferrer"
                                         className="bg-blue-600 font-bold hover:bg-blue-500 text-white py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
-                                        Ver Demo
+                                        {t('viewDemo')}
                                     </a>
                                     <a
                                         href={project.codeLink}
@@ -91,7 +92,7 @@ const Projects = () => {
                                         rel="noopener noreferrer"
                                         className="border border-blue-600 font-bold hover:bg-blue-600 hover:text-white text-blue-600 py-2 px-4 rounded-full mx-2 transition duration-300"
                                     >
-                                        Ver Código
+                                        {t('viewCode')}
                                     </a>
                                 </div>
                             </div>
@@ -109,7 +110,7 @@ const Projects = () => {
                                         <img
                                             key={techIndex}
                                             src={tech}
-                                            alt="Technology logo"
+                                            alt={t('technologyLogo')}
                                             className="w-7 h-7"
                                         />
                                     ))}

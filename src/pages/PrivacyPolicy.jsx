@@ -1,84 +1,72 @@
+// PrivacyPolicy.jsx
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const PrivacyPolicy = () => {
+    const { t } = useTranslation();
+
     return (
         <section className="py-20 bg-[#f5f4f7] text-gray-600">
             <div className="container mx-auto px-4">
                 {/* Solo el título */}
                 <div className="mb-8">
                     <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold">
-                        Política de Privacidad
+                        {t('privacyPolicyTitle')}
                     </h1>
                 </div>
                 
                 <div className="text-lg leading-relaxed space-y-6">
-                    <p>
-                        En <strong>mi página web</strong>, nos comprometemos a proteger tu privacidad. Este documento detalla cómo recopilamos, usamos y protegemos la información que compartes con nosotros.
-                    </p>
+                    <p dangerouslySetInnerHTML={{ __html: t('privacyPolicyParagraph1') }}></p>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">1. Información que Recopilamos</h2>
-                        <p>
-                            Podemos recopilar la siguiente información:
-                        </p>
+                        <h2 className="text-2xl font-bold mb-4">{t('privacyPolicySection1Title')}</h2>
+                        <p>{t('privacyPolicySection1Description')}</p>
                         <ul className="list-disc ml-6 mt-2 space-y-1">
-                            <li>Nombre completo</li>
-                            <li>Correo electrónico</li>
-                            <li>Asunto y contenido del mensaje enviado a través de nuestro formulario de contacto</li>
-                            <li>Aceptación de la politica de privacidad</li>
+                            <li>{t('privacyPolicySection1Item1')}</li>
+                            <li>{t('privacyPolicySection1Item2')}</li>
+                            <li>{t('privacyPolicySection1Item3')}</li>
+                            <li>{t('privacyPolicySection1Item4')}</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">2. Uso de la Información</h2>
-                        <p>
-                            Utilizamos tus datos únicamente para:
-                        </p>
+                        <h2 className="text-2xl font-bold mb-4">{t('privacyPolicySection2Title')}</h2>
+                        <p>{t('privacyPolicySection2Description')}</p>
                         <ul className="list-disc ml-6 mt-2 space-y-1">
-                            <li>Responder a tus consultas o mensajes enviados a través del formulario de contacto</li>
-                            <li>Enviar notificaciones relacionadas con tu consulta</li>
+                            <li>{t('privacyPolicySection2Item1')}</li>
+                            <li>{t('privacyPolicySection2Item2')}</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">3. Protección de la Información</h2>
-                        <p>
-                            Implementamos medidas de seguridad para proteger tus datos. Sin embargo, ningún sistema es completamente seguro, por lo que no podemos garantizar la seguridad absoluta.
-                        </p>
+                        <h2 className="text-2xl font-bold mb-4">{t('privacyPolicySection3Title')}</h2>
+                        <p>{t('privacyPolicySection3Description')}</p>
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">4. Derechos del Usuario</h2>
-                        <p>
-                            Tienes derecho a:
-                        </p>
+                        <h2 className="text-2xl font-bold mb-4">{t('privacyPolicySection4Title')}</h2>
+                        <p>{t('privacyPolicySection4Description')}</p>
                         <ul className="list-disc ml-6 mt-2 space-y-1">
-                            <li>Acceder a los datos que recopilamos</li>
-                            <li>Solicitar la corrección de datos incorrectos</li>
-                            <li>Solicitar la eliminación de tus datos</li>
+                            <li>{t('privacyPolicySection4Item1')}</li>
+                            <li>{t('privacyPolicySection4Item2')}</li>
+                            <li>{t('privacyPolicySection4Item3')}</li>
                         </ul>
-                        <p className="mt-2">
-                            Puedes ejercer estos derechos enviándonos un correo a: <strong>correo@ejemplo.com</strong>.
-                        </p>
+                        <p className="mt-2" dangerouslySetInnerHTML={{ __html: t('privacyPolicySection4FinalSentence') }}></p>
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">5. Cambios a Esta Política</h2>
-                        <p>
-                            Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será publicado en esta página.
-                        </p>
+                        <h2 className="text-2xl font-bold mb-4">{t('privacyPolicySection5Title')}</h2>
+                        <p>{t('privacyPolicySection5Description')}</p>
                     </div>
 
-                    <p>
-                        Si tienes dudas, contáctanos en <strong>correo@ejemplo.com</strong>.
-                    </p>
+                    <p className="mt-2" dangerouslySetInnerHTML={{ __html: t('privacyPolicyFinalParagraph') }}></p>
 
                     {/* Botón centrado */}
                     <div className="text-center mt-6">
                         <Link to="/">
                             <button className="bg-blue-500 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 transition duration-300">
-                                Regresar
+                                {t('backButton')}
                             </button>
                         </Link>
                     </div>

@@ -1,6 +1,10 @@
+// Skills.jsx
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
+    const { t } = useTranslation();
+
     return (
         <section
             id="skills"
@@ -8,10 +12,10 @@ const Skills = () => {
         >
             <div className="container mx-auto px-4">
                 <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
-                    Habilidades
+                    {t('skills')}
                 </h2>
                 <p className="text-center text-lg mb-12">
-                    Estas son algunas de las tecnologías y herramientas con las que trabajo:
+                    {t('skillsDescription')}
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
                     {/* Habilidad 1: HTML5 */}
@@ -41,7 +45,16 @@ const Skills = () => {
                         />
                         <h3 className="mt-4 text-lg font-semibold">JavaScript</h3>
                     </div>
-                    {/* Habilidad 4: React */}
+                    {/* Habilidad 4: Bootstrap */}
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                            alt="Bootstrap"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
+                        />
+                        <h3 className="mt-4 text-lg font-semibold">Bootstrap</h3>
+                    </div>
+                    {/* Habilidad 5: React */}
                     <div className="flex flex-col items-center">
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
@@ -50,34 +63,16 @@ const Skills = () => {
                         />
                         <h3 className="mt-4 text-lg font-semibold">React</h3>
                     </div>
-                    {/* Habilidad 5: Tailwind CSS */}
+                    {/* Habilidad 6: Tailwind CSS */}
                     <div className="flex flex-col items-center">
-                    <img
+                        <img
                             src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
                             alt="TailwindCSS"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Tailwind CSS</h3>
                     </div>
-                    {/* Habilidad 6: Git */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                            alt="Git"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Git</h3>
-                    </div>
-                    {/* Habilidad 7: GitHub */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                            alt="GitHub"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">GitHub</h3>
-                    </div>
-                    {/* Habilidad 8: Node.js */}
+                    {/* Habilidad 7: Node.js */}
                     <div className="flex flex-col items-center">
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
@@ -86,113 +81,50 @@ const Skills = () => {
                         />
                         <h3 className="mt-4 text-lg font-semibold">Node.js</h3>
                     </div>
-                    {/* Habilidad 9: Express.js */}
+                    {/* Habilidad 8: Firebase */}
                     <div className="flex flex-col items-center">
                         <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                            alt="Express.js"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                            alt="Firebase"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
-                        <h3 className="mt-4 text-lg font-semibold">Express.js</h3>
+                        <h3 className="mt-4 text-lg font-semibold">Firebase</h3>
                     </div>
-                    {/* Habilidad 10: MongoDB */}
+                    {/* Habilidad 9: ChatGPT */}
                     <div className="flex flex-col items-center">
                         <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                            alt="MongoDB"
+                            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg"
+                            alt="ChatGPT"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
-                        <h3 className="mt-4 text-lg font-semibold">MongoDB</h3>
+                        <h3 className="mt-4 text-lg font-semibold">ChatGPT</h3>
                     </div>
-                    {/* Habilidad 11: Python */}
+                    {/* Habilidad 10: Git */}
                     <div className="flex flex-col items-center">
                         <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            alt="Python"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                            alt="Git"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
-                        <h3 className="mt-4 text-lg font-semibold">Python</h3>
+                        <h3 className="mt-4 text-lg font-semibold">Git</h3>
                     </div>
-                    {/* Habilidad 12: Django */}
+                    {/* Habilidad 11: GitHub */}
                     <div className="flex flex-col items-center">
                         <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
-                            alt="Django"
-                            className="w-14 h-14 filter invert transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Django</h3>
-                    </div>
-                    {/* Habilidad 13: MySQL */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                            alt="MySQL"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                            alt="GitHub"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
-                        <h3 className="mt-4 text-lg font-semibold">MySQL</h3>
+                        <h3 className="mt-4 text-lg font-semibold">GitHub</h3>
                     </div>
-                    {/* Habilidad 14: PostgreSQL */}
+                    {/* Habilidad 12: Visual Studio Code */}
                     <div className="flex flex-col items-center">
                         <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                            alt="PostgreSQL"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                            alt="Visual Studio Code"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
-                        <h3 className="mt-4 text-lg font-semibold">PostgreSQL</h3>
-                    </div>
-                    {/* Habilidad 15: Redux */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
-                            alt="Redux"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Redux</h3>
-                    </div>
-                    {/* Habilidad 16: Next.js */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
-                            alt="Next.js"
-                            className="w-14 h-14 filter invert transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Next.js</h3>
-                    </div>
-                    {/* Habilidad 17: TypeScript */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                            alt="TypeScript"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">TypeScript</h3>
-                    </div>
-                    {/* Habilidad 18: Sass */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
-                            alt="Sass"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Sass</h3>
-                    </div>
-                    {/* Habilidad 19: Webpack */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg"
-                            alt="Webpack"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Webpack</h3>
-                    </div>
-                    {/* Habilidad 20: Docker */}
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                            alt="Docker"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Docker</h3>
+                        <h3 className="mt-4 text-lg font-semibold">Visual Studio Code</h3>
                     </div>
                 </div>
             </div>

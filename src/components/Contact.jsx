@@ -1,7 +1,10 @@
+// Contact.jsx
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { useTranslation, Trans } from 'react-i18next';
 
 const Contact = () => {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -27,21 +30,21 @@ const Contact = () => {
     const validate = () => {
         const newErrors = {};
         if (!formData.name.trim()) {
-            newErrors.name = "El nombre es obligatorio.";
+            newErrors.name = t('validation.nameRequired');
         }
         if (!formData.email.trim()) {
-            newErrors.email = "El correo electrónico es obligatorio.";
+            newErrors.email = t('validation.emailRequired');
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = "El correo electrónico no es válido.";
+            newErrors.email = t('validation.emailInvalid');
         }
         if (!formData.subject) {
-            newErrors.subject = "Debes seleccionar un asunto.";
+            newErrors.subject = t('validation.subjectRequired');
         }
         if (!formData.message.trim()) {
-            newErrors.message = "El mensaje no puede estar vacío.";
+            newErrors.message = t('validation.messageRequired');
         }
         if (!formData.privacyConsent) {
-            newErrors.privacyConsent = "Debes aceptar la Política de Privacidad.";
+            newErrors.privacyConsent = t('validation.privacyConsentRequired');
         }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -79,7 +82,7 @@ const Contact = () => {
                 setModal({
                     show: true,
                     type: "success",
-                    message: "Formulario enviado correctamente. Hemos enviado una confirmación a tu correo.",
+                    message: t('contact.successMessage'),
                 });
 
                 // Limpiar formulario
@@ -91,7 +94,7 @@ const Contact = () => {
                 setModal({
                     show: true,
                     type: "error",
-                    message: "Hubo un error al enviar el formulario. Por favor, inténtalo nuevamente.",
+                    message: t('contact.errorMessage'),
                 });
             } finally {
                 setLoading(false);
@@ -106,10 +109,10 @@ const Contact = () => {
         >
             <div className="container mx-auto px-4">
                 <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
-                    Contáctame
+                    {t('contact')}
                 </h2>
                 <p className="text-center text-lg mb-12">
-                    Si tienes alguna pregunta o propuesta, no dudes en enviarme un mensaje a través del formulario de contacto.
+                    {t('contactDescription')}
                 </p>
                 <div className="max-w-2xl mx-auto">
                     {modal.show && (
@@ -118,7 +121,7 @@ const Contact = () => {
                                 <h2
                                     className={`text-xl font-bold ${modal.type === "success" ? "text-green-500" : "text-red-500"}`}
                                 >
-                                    {modal.type === "success" ? "Éxito" : "Error"}
+                                    {modal.type === "success" ? t('contact.successTitle') : t('contact.errorTitle')}
                                 </h2>
                                 <p className="text-slate-100 mt-4">{modal.message}</p>
                                 <div className="mt-6 text-center">
@@ -126,7 +129,7 @@ const Contact = () => {
                                         onClick={() => setModal({ ...modal, show: false })}
                                         className="bg-slate-50 text-slate-900 px-4 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
                                     >
-                                        Cerrar
+                                        {t('contact.closeButton')}
                                     </button>
                                 </div>
                             </div>
@@ -150,14 +153,14 @@ const Contact = () => {
                                 htmlFor="name"
                                 className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Nombre:
+                                {t('form.nameLabel')}
                             </label>
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="Escribe tu nombre"
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder={t('form.namePlaceholder')}
                                 value={formData.name}
                                 onChange={handleChange}
                             />
@@ -171,14 +174,14 @@ const Contact = () => {
                                 htmlFor="email"
                                 className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Correo Electrónico:
+                                {t('form.emailLabel')}
                             </label>
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="Escribe tu correo"
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder={t('form.emailPlaceholder')}
                                 value={formData.email}
                                 onChange={handleChange}
                             />
@@ -192,21 +195,21 @@ const Contact = () => {
                                 htmlFor="subject"
                                 className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Asunto:
+                                {t('form.subjectLabel')}
                             </label>
                             <select
                                 id="subject"
                                 name="subject"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value={formData.subject}
                                 onChange={handleChange}
                             >
                                 <option value="" disabled>
-                                    Selecciona un asunto
+                                    {t('form.subjectPlaceholder')}
                                 </option>
-                                <option value="consulta">Consulta</option>
-                                <option value="propuesta">Propuesta</option>
-                                <option value="otro">Otro</option>
+                                <option value="consulta">{t('form.subjectOptions.consulta')}</option>
+                                <option value="propuesta">{t('form.subjectOptions.propuesta')}</option>
+                                <option value="otro">{t('form.subjectOptions.otro')}</option>
                             </select>
                             {errors.subject && (
                                 <p className="text-red-500 text-sm">{errors.subject}</p>
@@ -218,14 +221,14 @@ const Contact = () => {
                                 htmlFor="message"
                                 className="block text-gray-600 text-lg font-semibold mb-2"
                             >
-                                Mensaje:
+                                {t('form.messageLabel')}
                             </label>
                             <textarea
                                 id="message"
                                 name="message"
                                 rows="5"
-                                className="w-full bg-[#f5f4f7] text-white border border-gray-800 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="Escribe tu mensaje..."
+                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder={t('form.messagePlaceholder')}
                                 value={formData.message}
                                 onChange={handleChange}
                             ></textarea>
@@ -244,10 +247,10 @@ const Contact = () => {
                                     onChange={handleChange}
                                 />
                                 <span className="text-gray-600 text-sm">
-                                    Acepto la{" "}
-                                    <a href="/privacy-policy" className="underline text-blue-500 hover:text-blue-600">
-                                        Política de Privacidad
-                                    </a>.
+                                    <Trans
+                                        i18nKey="checkboxLabel"
+                                        components={[<a href="/privacy-policy" className="underline text-blue-500 hover:text-blue-600" />]}
+                                    />
                                 </span>
                             </label>
                             {errors.privacyConsent && (
@@ -261,7 +264,7 @@ const Contact = () => {
                                 className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
                                 disabled={loading}
                             >
-                                {loading ? "Enviando..." : "Enviar Mensaje"}
+                                {loading ? t('form.sending') : t('form.sendMessage')}
                             </button>
                         </div>
                     </form>

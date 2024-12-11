@@ -2,8 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
+    const { t, i18n } = useTranslation();
     const location = useLocation();
     const isPrivacyPolicy = location.pathname === "/privacy-policy";
 
@@ -11,7 +13,6 @@ const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("");
-    const [language, setLanguage] = useState("Español");
     const [scrolled, setScrolled] = useState(false); // Nuevo estado para controlar opacidad
 
     const navbarRef = useRef(null);
@@ -78,6 +79,13 @@ const Navbar = () => {
         };
     }, []);
 
+    // Función para cambiar el idioma
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+        setDropdownOpen(false);
+        setMobileDropdownOpen(false);
+    };
+
     return (
         <nav
             ref={navbarRef}
@@ -98,10 +106,10 @@ const Navbar = () => {
                             }}
                             className="hover:text-blue-500 hover:font-bold cursor-pointer bg-transparent border-none p-0"
                         >
-                            Regresar
+                            {t('goBack')}
                         </button>
                         <span>/</span>
-                        <span className="text-blue-500 underline font-bold">Privacy Policy</span>
+                        <span className="text-blue-500 underline font-bold">{t('privacyPolicy')}</span>
                     </div>
                 )}
                 {isPrivacyPolicy ? (
@@ -114,16 +122,13 @@ const Navbar = () => {
                                         dropdownOpen ? "text-blue-500 font-bold underline" : ""
                                     }`}
                                 >
-                                    Lenguaje
+                                    {t('language')}
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
                                     <div className="absolute left-0 mt-2 bg-[#f5f4f7] text-gray-600 rounded-lg shadow-lg md:w-40 w-auto">
                                         <button
-                                            onClick={() => {
-                                                setLanguage("Español");
-                                                setDropdownOpen(false);
-                                            }}
+                                            onClick={() => changeLanguage('es')}
                                             className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                         >
                                             <img
@@ -131,13 +136,10 @@ const Navbar = () => {
                                                 alt="Mexico"
                                                 className="w-5 h-5 mr-2"
                                             />
-                                            Español
+                                            {t('spanish')}
                                         </button>
                                         <button
-                                            onClick={() => {
-                                                setLanguage("Inglés");
-                                                setDropdownOpen(false);
-                                            }}
+                                            onClick={() => changeLanguage('en')}
                                             className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                         >
                                             <img
@@ -145,7 +147,7 @@ const Navbar = () => {
                                                 alt="USA"
                                                 className="w-5 h-5 mr-2"
                                             />
-                                            Inglés
+                                            {t('english')}
                                         </button>
                                     </div>
                                 )}
@@ -187,7 +189,7 @@ const Navbar = () => {
                                     activeSection === "hero" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
-                                Inicio
+                                {t('home')}
                             </a>
                             <a
                                 href="#about"
@@ -196,7 +198,7 @@ const Navbar = () => {
                                     activeSection === "about" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
-                                Sobre mí
+                                {t('about')}
                             </a>
                             <a
                                 href="#skills"
@@ -205,7 +207,7 @@ const Navbar = () => {
                                     activeSection === "skills" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
-                                Habilidades
+                                {t('skills')}
                             </a>
                             <a
                                 href="#projects"
@@ -214,7 +216,7 @@ const Navbar = () => {
                                     activeSection === "projects" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
-                                Proyectos
+                                {t('projects')}
                             </a>
                             <a
                                 href="#Resume"
@@ -223,7 +225,7 @@ const Navbar = () => {
                                     activeSection === "Resume" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
-                                Curriculum
+                                {t('resume')}
                             </a>
                             <a
                                 href="#contact"
@@ -232,7 +234,7 @@ const Navbar = () => {
                                     activeSection === "contact" ? "text-blue-500 font-bold underline" : ""
                                 }`}
                             >
-                                Contacto
+                                {t('contact')}
                             </a>
                             <div className="relative">
                                 <button
@@ -241,16 +243,13 @@ const Navbar = () => {
                                         dropdownOpen ? "text-blue-500 font-bold underline" : ""
                                     }`}
                                 >
-                                    Lenguaje
+                                    {t('language')}
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
                                     <div className="absolute left-0 mt-2 bg-[#f5f4f7] text-gray-600 rounded-lg shadow-lg md:w-40 w-auto">
                                         <button
-                                            onClick={() => {
-                                                setLanguage("Español");
-                                                setDropdownOpen(false);
-                                            }}
+                                            onClick={() => changeLanguage('es')}
                                             className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                         >
                                             <img
@@ -258,13 +257,10 @@ const Navbar = () => {
                                                 alt="Mexico"
                                                 className="w-5 h-5 mr-2"
                                             />
-                                            Español
+                                            {t('spanish')}
                                         </button>
                                         <button
-                                            onClick={() => {
-                                                setLanguage("Inglés");
-                                                setDropdownOpen(false);
-                                            }}
+                                            onClick={() => changeLanguage('en')}
                                             className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                         >
                                             <img
@@ -272,7 +268,7 @@ const Navbar = () => {
                                                 alt="USA"
                                                 className="w-5 h-5 mr-2"
                                             />
-                                            Inglés
+                                            {t('english')}
                                         </button>
                                     </div>
                                 )}
@@ -314,16 +310,13 @@ const Navbar = () => {
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
                             className="block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 flex items-center justify-between w-full"
                         >
-                            Lenguaje
+                            {t('language')}
                             <FaChevronDown className="ml-2" />
                         </button>
                         {mobileDropdownOpen && (
                             <div className="text-gray-600 rounded-lg">
                                 <button
-                                    onClick={() => {
-                                        setLanguage("Español");
-                                        setMobileDropdownOpen(false);
-                                    }}
+                                    onClick={() => changeLanguage('es')}
                                     className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                 >
                                     <img
@@ -331,13 +324,10 @@ const Navbar = () => {
                                         alt="Mexico"
                                         className="w-5 h-5 mr-2"
                                     />
-                                    Español
+                                    {t('spanish')}
                                 </button>
                                 <button
-                                    onClick={() => {
-                                        setLanguage("Inglés");
-                                        setMobileDropdownOpen(false);
-                                    }}
+                                    onClick={() => changeLanguage('en')}
                                     className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                 >
                                     <img
@@ -345,7 +335,7 @@ const Navbar = () => {
                                         alt="USA"
                                         className="w-5 h-5 mr-2"
                                     />
-                                    Inglés
+                                    {t('english')}
                                 </button>
                             </div>
                         )}
@@ -362,7 +352,7 @@ const Navbar = () => {
                             activeSection === "hero" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
-                        Inicio
+                        {t('home')}
                     </a>
                     <a
                         href="#about"
@@ -371,7 +361,7 @@ const Navbar = () => {
                             activeSection === "about" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
-                        Sobre mí
+                        {t('about')}
                     </a>
                     <a
                         href="#skills"
@@ -380,7 +370,7 @@ const Navbar = () => {
                             activeSection === "skills" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
-                        Habilidades
+                        {t('skills')}
                     </a>
                     <a
                         href="#projects"
@@ -389,7 +379,7 @@ const Navbar = () => {
                             activeSection === "projects" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
-                        Proyectos
+                        {t('projects')}
                     </a>
                     <a
                         href="#Resume"
@@ -398,7 +388,7 @@ const Navbar = () => {
                             activeSection === "Resume" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
-                        Curriculum
+                        {t('resume')}
                     </a>
                     <a
                         href="#contact"
@@ -407,23 +397,20 @@ const Navbar = () => {
                             activeSection === "contact" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
-                        Contacto
+                        {t('contact')}
                     </a>
                     <div className="relative">
                         <button
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
                             className="block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 flex items-center justify-between w-full"
                         >
-                            Lenguaje
+                            {t('language')}
                             <FaChevronDown className="ml-2" />
                         </button>
                         {mobileDropdownOpen && (
                             <div className="text-gray-600 rounded-lg">
                                 <button
-                                    onClick={() => {
-                                        setLanguage("Español");
-                                        setMobileDropdownOpen(false);
-                                    }}
+                                    onClick={() => changeLanguage('es')}
                                     className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                 >
                                     <img
@@ -431,13 +418,10 @@ const Navbar = () => {
                                         alt="Mexico"
                                         className="w-5 h-5 mr-2"
                                     />
-                                    Español
+                                    {t('spanish')}
                                 </button>
                                 <button
-                                    onClick={() => {
-                                        setLanguage("Inglés");
-                                        setMobileDropdownOpen(false);
-                                    }}
+                                    onClick={() => changeLanguage('en')}
                                     className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
                                 >
                                     <img
@@ -445,7 +429,7 @@ const Navbar = () => {
                                         alt="USA"
                                         className="w-5 h-5 mr-2"
                                     />
-                                    Inglés
+                                    {t('english')}
                                 </button>
                             </div>
                         )}

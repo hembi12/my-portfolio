@@ -1,24 +1,16 @@
+// Hero.jsx
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import { FaChevronDown } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+    const { t } = useTranslation();
     const typedRef = useRef(null);
 
     useEffect(() => {
         const typed = new Typed(typedRef.current, {
-            strings: [
-                "Apasionado",
-                "Astuto",
-                "Creativo",
-                "Curioso",
-                "Dinámico",
-                "Disciplinado",
-                "Enfocado",
-                "Empático",
-                "Persistente",
-                "Perfeccionista",
-            ],
+            strings: t('typedStrings', { returnObjects: true }),
             typeSpeed: 100,
             backSpeed: 50,
             loop: true,
@@ -29,7 +21,7 @@ const Hero = () => {
         return () => {
             typed.destroy();
         };
-    }, []);
+    }, [t]);
 
     // Función para hacer scroll suave a una sección
     const scrollToSection = (id) => {
@@ -45,8 +37,7 @@ const Hero = () => {
             className="bg-[#f5f4f7] text-white h-screen flex flex-col justify-center items-center relative"
         >
             <div className="container mx-auto px-4 text-center">
-                <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight"
-                >
+                <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight">
                     Héctor Martil
                 </h1>
                 {/* Palabras animadas */}
@@ -64,7 +55,7 @@ const Hero = () => {
                         }}
                         className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
                     >
-                        Ver Proyectos
+                        {t('viewProjects')}
                     </a>
                     {/* Botón Contáctame */}
                     <a
@@ -75,7 +66,7 @@ const Hero = () => {
                         }}
                         className="border border-blue-600 text-blue-600 px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white transition duration-300"
                     >
-                        Contáctame
+                        {t('contactMe')}
                     </a>
                 </div>
             </div>

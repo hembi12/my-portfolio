@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Hero = lazy(() => import("./components/Hero"));
@@ -12,10 +13,12 @@ const Footer = lazy(() => import("./components/Footer"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy")); // También se carga de forma diferida
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <Router>
       {/* Suspense muestra "Cargando..." mientras se cargan los componentes */}
-      <Suspense fallback={<div>Cargando...</div>}>
+      <Suspense fallback={<div>{t('loading')}</div>}>
         <Navbar />
         <Routes>
           <Route
