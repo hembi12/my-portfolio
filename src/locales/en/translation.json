@@ -11,6 +11,7 @@
     "resume": "Resume",
     "contact": "Contact Me",
     "loading": "Loading...",
+    "languageAlreadySelected": "This language is already selected.",
     "typedStrings": [
         "Passionate",
         "Skilled",

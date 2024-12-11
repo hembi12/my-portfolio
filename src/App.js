@@ -10,14 +10,13 @@ const Projects = lazy(() => import("./components/Projects"));
 const Resume = lazy(() => import("./components/Resume"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy")); // También se carga de forma diferida
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 function App() {
   const { t } = useTranslation();
 
   return (
     <Router>
-      {/* Suspense muestra "Cargando..." mientras se cargan los componentes */}
       <Suspense fallback={<div>{t('loading')}</div>}>
         <Navbar />
         <Routes>

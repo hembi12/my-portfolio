@@ -11,6 +11,7 @@
     "resume": "Curriculum",
     "contact": "Contáctame",
     "loading": "Cargando...",
+    "languageAlreadySelected": "Este idioma ya está seleccionado.",
     "typedStrings": [
         "Apasionado",
         "Astuto",

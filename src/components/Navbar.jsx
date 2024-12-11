@@ -1,4 +1,5 @@
-// Navbar.jsx
+// Ejemplo de Navbar.jsx con la notificación
+
 import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
@@ -13,7 +14,9 @@ const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("");
-    const [scrolled, setScrolled] = useState(false); // Nuevo estado para controlar opacidad
+    const [scrolled, setScrolled] = useState(false);
+
+    const [notification, setNotification] = useState(null); // Estado para notificaciones
 
     const navbarRef = useRef(null);
 
@@ -63,7 +66,6 @@ const Navbar = () => {
         };
     }, []);
 
-    // Nuevo efecto para cambiar la opacidad del navbar al hacer scroll
     useEffect(() => {
         const onScroll = () => {
             if (window.scrollY > 50) {
@@ -81,7 +83,14 @@ const Navbar = () => {
 
     // Función para cambiar el idioma
     const changeLanguage = (lng) => {
-        i18n.changeLanguage(lng);
+        if (i18n.language === lng) {
+            // Si el idioma ya está seleccionado, mostrar notificación
+            setNotification(t('languageAlreadySelected'));
+            // Ocultar notificación después de 3 segundos
+            setTimeout(() => setNotification(null), 3000);
+        } else {
+            i18n.changeLanguage(lng);
+        }
         setDropdownOpen(false);
         setMobileDropdownOpen(false);
     };
@@ -302,6 +311,15 @@ const Navbar = () => {
                     </>
                 )}
             </div>
+
+            {/* Notificación si el idioma ya está seleccionado */}
+            {notification && (
+                <div className="absolute top-16 w-full flex justify-center z-50">
+                    <div className="bg-red-500 text-white font-bold px-4 py-2 rounded-md shadow-xl">
+                        {notification}
+                    </div>
+                </div>
+            )}
 
             {isPrivacyPolicy && isOpen && (
                 <div className="md:hidden">
