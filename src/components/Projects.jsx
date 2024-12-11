@@ -1,4 +1,4 @@
-// Projects.jsx
+// Projects.jsx con Soporte para Modo Oscuro
 import React from "react";
 import { useTranslation } from 'react-i18next';
 
@@ -47,7 +47,7 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="py-20 bg-[#f5f4f7] text-gray-600"
+            className="py-20 bg-[#f5f4f7] dark:bg-gray-800 text-gray-600 dark:text-gray-200 transition-colors duration-500"
         >
             <div className="container mx-auto px-4">
                 <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
@@ -60,10 +60,10 @@ const Projects = () => {
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className="bg-gray-200 rounded-lg shadow-xl flex flex-col overflow-hidden group"
+                            className="bg-gray-200 dark:bg-gray-700 rounded-lg shadow-xl flex flex-col overflow-hidden group transition-colors duration-500"
                         >
                             {/* Barra de la ventana estilo Mac */}
-                            <div className="bg-gray-300 flex items-center px-4 py-2">
+                            <div className="bg-gray-300 dark:bg-gray-600 flex items-center px-4 py-2">
                                 <div className="flex space-x-2">
                                     <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                                     <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -75,14 +75,14 @@ const Projects = () => {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-48 object-cover"
+                                    className="w-full h-48 object-cover dark:filter dark:invert transition-transform duration-500"
                                 />
-                                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <a
                                         href={project.demoLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="bg-blue-600 font-bold hover:bg-blue-500 text-white py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="bg-blue-600 dark:bg-blue-500 font-bold hover:bg-blue-500 dark:hover:bg-blue-400 text-white py-2 px-4 rounded-full mx-2 transition-colors duration-300"
                                     >
                                         {t('viewDemo')}
                                     </a>
@@ -90,7 +90,7 @@ const Projects = () => {
                                         href={project.codeLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="border border-blue-600 font-bold hover:bg-blue-600 hover:text-white text-blue-600 py-2 px-4 rounded-full mx-2 transition duration-300"
+                                        className="border border-blue-600 dark:border-blue-500 font-bold hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-white text-blue-600 dark:text-blue-500 py-2 px-4 rounded-full mx-2 transition-colors duration-300"
                                     >
                                         {t('viewCode')}
                                     </a>
@@ -98,10 +98,10 @@ const Projects = () => {
                             </div>
                             {/* Contenido del proyecto */}
                             <div className="p-4 flex flex-col">
-                                <h3 className="text-gray-600 text-2xl font-semibold mb-2">
+                                <h3 className="text-gray-600 dark:text-gray-200 text-2xl font-semibold mb-2">
                                     {project.title}
                                 </h3>
-                                <p className="text-gray-600 mb-4">
+                                <p className="text-gray-600 dark:text-gray-300 mb-4">
                                     {project.description}
                                 </p>
                                 {/* Logos de tecnologías */}
@@ -111,7 +111,7 @@ const Projects = () => {
                                             key={techIndex}
                                             src={tech}
                                             alt={t('technologyLogo')}
-                                            className="w-7 h-7"
+                                            className="w-7 h-7 dark:filter dark:invert transition-transform duration-500"
                                         />
                                     ))}
                                 </div>

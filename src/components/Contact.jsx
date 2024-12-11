@@ -1,4 +1,4 @@
-// Contact.jsx
+// Contact.jsx con Soporte para Modo Oscuro
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { useTranslation, Trans } from 'react-i18next';
@@ -105,7 +105,7 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="py-20 bg-[#f5f4f7] text-gray-600"
+            className="py-20 bg-[#f5f4f7] dark:bg-gray-800 text-gray-600 dark:text-gray-200 transition-colors duration-500"
         >
             <div className="container mx-auto px-4">
                 <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
@@ -117,17 +117,15 @@ const Contact = () => {
                 <div className="max-w-2xl mx-auto">
                     {modal.show && (
                         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                            <div className="bg-gray-300 rounded-lg shadow-lg p-6 w-11/12 sm:w-96">
-                                <h2
-                                    className={`text-xl font-bold ${modal.type === "success" ? "text-green-500" : "text-red-500"}`}
-                                >
+                            <div className={`rounded-lg shadow-lg p-6 w-11/12 sm:w-96 ${modal.type === "success" ? "bg-green-500" : "bg-red-500"}`}>
+                                <h2 className={`text-xl font-bold ${modal.type === "success" ? "text-white" : "text-white"}`}>
                                     {modal.type === "success" ? t('contact.successTitle') : t('contact.errorTitle')}
                                 </h2>
-                                <p className="text-slate-100 mt-4">{modal.message}</p>
+                                <p className="text-white mt-4">{modal.message}</p>
                                 <div className="mt-6 text-center">
                                     <button
                                         onClick={() => setModal({ ...modal, show: false })}
-                                        className="bg-slate-50 text-slate-900 px-4 py-2 rounded-full font-bold hover:bg-slate-300 transition duration-300"
+                                        className="bg-white text-gray-800 px-4 py-2 rounded-full font-bold hover:bg-gray-200 transition duration-300"
                                     >
                                         {t('contact.closeButton')}
                                     </button>
@@ -136,7 +134,7 @@ const Contact = () => {
                         </div>
                     )}
                     {/* Barra de la ventana estilo Mac */}
-                    <div className="bg-gray-300 flex items-center px-4 py-2">
+                    <div className="bg-gray-300 dark:bg-gray-700 flex items-center px-4 py-2">
                         <div className="flex space-x-2">
                             <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -145,13 +143,13 @@ const Contact = () => {
                     </div>
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-gray-200 p-8 rounded-b-lg shadow-xl"
+                        className="bg-gray-200 dark:bg-gray-700 p-8 rounded-b-lg shadow-xl transition-colors duration-500"
                     >
                         {/* Nombre */}
                         <div className="mb-6">
                             <label
                                 htmlFor="name"
-                                className="block text-gray-600 text-lg font-semibold mb-2"
+                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
                             >
                                 {t('form.nameLabel')}
                             </label>
@@ -159,7 +157,7 @@ const Contact = () => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={t('form.namePlaceholder')}
                                 value={formData.name}
                                 onChange={handleChange}
@@ -172,7 +170,7 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="email"
-                                className="block text-gray-600 text-lg font-semibold mb-2"
+                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
                             >
                                 {t('form.emailLabel')}
                             </label>
@@ -180,7 +178,7 @@ const Contact = () => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={t('form.emailPlaceholder')}
                                 value={formData.email}
                                 onChange={handleChange}
@@ -193,14 +191,14 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="subject"
-                                className="block text-gray-600 text-lg font-semibold mb-2"
+                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
                             >
                                 {t('form.subjectLabel')}
                             </label>
                             <select
                                 id="subject"
                                 name="subject"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value={formData.subject}
                                 onChange={handleChange}
                             >
@@ -219,7 +217,7 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="message"
-                                className="block text-gray-600 text-lg font-semibold mb-2"
+                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
                             >
                                 {t('form.messageLabel')}
                             </label>
@@ -227,7 +225,7 @@ const Contact = () => {
                                 id="message"
                                 name="message"
                                 rows="5"
-                                className="w-full bg-[#f5f4f7] text-gray-600 border border-gray-400 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={t('form.messagePlaceholder')}
                                 value={formData.message}
                                 onChange={handleChange}
@@ -242,15 +240,15 @@ const Contact = () => {
                                 <input
                                     type="checkbox"
                                     name="privacyConsent"
-                                    className="mr-2 rounded"
+                                    className="mr-2 rounded dark:bg-gray-600 dark:border-gray-500"
                                     checked={formData.privacyConsent}
                                     onChange={handleChange}
                                 />
-                                <span className="text-gray-600 text-sm">
+                                <span className="text-gray-600 dark:text-gray-200 text-sm">
                                     <Trans
                                         i18nKey="checkboxLabel"
                                         components={{
-                                            1: <a href="/privacy-policy" className="underline text-blue-500 hover:text-blue-600" />
+                                            1: <a href="/privacy-policy" className="underline text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-500" />
                                         }}
                                     />
                                 </span>
@@ -263,7 +261,7 @@ const Contact = () => {
                         <div className="text-center">
                             <button
                                 type="submit"
-                                className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
+                                className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 dark:hover:bg-blue-400 transition duration-300"
                                 disabled={loading}
                             >
                                 {loading ? t('form.sending') : t('form.sendMessage')}

@@ -1,7 +1,7 @@
-// Ejemplo de Navbar.jsx con la notificación
+// Navbar.jsx con Modo Oscuro, Botón de Toggle al lado de "HM" y Menú Móvil Visible en < 1024px
 
 import React, { useState, useEffect, useRef } from "react";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaMoon, FaSun } from "react-icons/fa"; // Importa iconos para el toggle
 import { useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
@@ -18,7 +18,35 @@ const Navbar = () => {
 
     const [notification, setNotification] = useState(null); // Estado para notificaciones
 
+    const [isDarkMode, setIsDarkMode] = useState(false); // Estado para modo oscuro
+
     const navbarRef = useRef(null);
+
+    // Cargar preferencia de modo oscuro al montar el componente
+    useEffect(() => {
+        const darkModePreference = localStorage.getItem('theme') === 'dark';
+        setIsDarkMode(darkModePreference);
+        if (darkModePreference) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, []);
+
+    // Actualizar la clase del documento cuando cambia el estado de modo oscuro
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [isDarkMode]);
+
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+    };
 
     useEffect(() => {
         if (isPrivacyPolicy) return;
@@ -98,14 +126,30 @@ const Navbar = () => {
     return (
         <nav
             ref={navbarRef}
-            className={`fixed top-0 left-0 w-full bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur 
-            ${scrolled ? 'bg-opacity-10' : 'bg-opacity-0'} 
-            backdrop-saturate-100 backdrop-contrast-100 text-gray-700 z-50 transition-opacity duration-300`}
+            className={`fixed top-0 left-0 w-full 
+                bg-gray-100 dark:bg-gray-800 
+                bg-clip-padding backdrop-filter backdrop-blur 
+                ${scrolled ? 'bg-opacity-90 dark:bg-opacity-90' : 'bg-opacity-50 dark:bg-opacity-50'} 
+                backdrop-saturate-100 backdrop-contrast-100 
+                text-gray-700 dark:text-gray-300 
+                z-50 transition-opacity duration-300`}
         >
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
-                <div className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-2xl font-bold">
-                    HM
+                {/* Contenedor para "HM" y el botón de modo oscuro */}
+                <div className="flex items-center">
+                    <div className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-2xl font-bold">
+                        HM
+                    </div>
+                    {/* Botón para alternar modo oscuro */}
+                    <button
+                        onClick={toggleDarkMode}
+                        className="ml-4 flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
+                        aria-label="Toggle Dark Mode"
+                    >
+                        {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+                    </button>
                 </div>
+
                 {isPrivacyPolicy && (
                     <div className="flex space-x-2 text-sm">
                         <button
@@ -121,9 +165,10 @@ const Navbar = () => {
                         <span className="text-blue-500 underline font-bold">{t('privacyPolicy')}</span>
                     </div>
                 )}
+
                 {isPrivacyPolicy ? (
                     <>
-                        <div className="hidden md:flex space-x-6 items-center">
+                        <div className="hidden lg:flex space-x-6 items-center">
                             <div className="relative">
                                 <button
                                     onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -135,10 +180,10 @@ const Navbar = () => {
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 bg-[#f5f4f7] text-gray-600 rounded-lg shadow-lg md:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg lg:w-40 w-auto">
                                         <button
                                             onClick={() => changeLanguage('es')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -149,7 +194,7 @@ const Navbar = () => {
                                         </button>
                                         <button
                                             onClick={() => changeLanguage('en')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -162,10 +207,11 @@ const Navbar = () => {
                                 )}
                             </div>
                         </div>
-                        <div className="md:hidden">
+                        <div className="lg:hidden flex items-center">
+                            {/* Botón de menú móvil */}
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white focus:outline-none mr-2"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -186,11 +232,12 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </button>
+                            {/* Nota: El botón de modo oscuro ha sido eliminado de esta sección */}
                         </div>
                     </>
                 ) : (
                     <>
-                        <div className="hidden md:flex space-x-6 items-center">
+                        <div className="hidden lg:flex space-x-6 items-center">
                             <a
                                 href="#hero"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
@@ -256,10 +303,10 @@ const Navbar = () => {
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 bg-[#f5f4f7] text-gray-600 rounded-lg shadow-lg md:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg lg:w-40 w-auto">
                                         <button
                                             onClick={() => changeLanguage('es')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -270,7 +317,7 @@ const Navbar = () => {
                                         </button>
                                         <button
                                             onClick={() => changeLanguage('en')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -283,10 +330,11 @@ const Navbar = () => {
                                 )}
                             </div>
                         </div>
-                        <div className="md:hidden">
+                        <div className="lg:hidden flex items-center">
+                            {/* Botón de menú móvil */}
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white focus:outline-none mr-2"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -307,6 +355,7 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </button>
+                            {/* Nota: El botón de modo oscuro ha sido eliminado de esta sección */}
                         </div>
                     </>
                 )}
@@ -315,27 +364,27 @@ const Navbar = () => {
             {/* Notificación si el idioma ya está seleccionado */}
             {notification && (
                 <div className="absolute top-16 w-full flex justify-center z-50">
-                    <div className="bg-red-500 text-white font-bold px-4 py-2 rounded-md shadow-xl">
+                    <div className="bg-red-500 dark:bg-red-700 text-white font-bold px-4 py-2 rounded-md shadow-xl">
                         {notification}
                     </div>
                 </div>
             )}
 
             {isPrivacyPolicy && isOpen && (
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <div className="relative">
                         <button
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                            className="block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 flex items-center justify-between w-full"
+                            className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 flex items-center justify-between w-full"
                         >
                             {t('language')}
                             <FaChevronDown className="ml-2" />
                         </button>
                         {mobileDropdownOpen && (
-                            <div className="text-gray-600 rounded-lg">
+                            <div className="bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
                                 <button
                                     onClick={() => changeLanguage('es')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -346,7 +395,7 @@ const Navbar = () => {
                                 </button>
                                 <button
                                     onClick={() => changeLanguage('en')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -362,11 +411,11 @@ const Navbar = () => {
             )}
 
             {!isPrivacyPolicy && isOpen && (
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <a
                         href="#hero"
                         onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
                             activeSection === "hero" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -375,7 +424,7 @@ const Navbar = () => {
                     <a
                         href="#about"
                         onClick={(e) => { e.preventDefault(); scrollToSection('about'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
                             activeSection === "about" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -384,7 +433,7 @@ const Navbar = () => {
                     <a
                         href="#skills"
                         onClick={(e) => { e.preventDefault(); scrollToSection('skills'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
                             activeSection === "skills" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -393,7 +442,7 @@ const Navbar = () => {
                     <a
                         href="#projects"
                         onClick={(e) => { e.preventDefault(); scrollToSection('projects'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
                             activeSection === "projects" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -402,7 +451,7 @@ const Navbar = () => {
                     <a
                         href="#Resume"
                         onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
                             activeSection === "Resume" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -411,7 +460,7 @@ const Navbar = () => {
                     <a
                         href="#contact"
                         onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
                             activeSection === "contact" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -420,16 +469,16 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                            className="block px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 flex items-center justify-between w-full"
+                            className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 flex items-center justify-between w-full"
                         >
                             {t('language')}
                             <FaChevronDown className="ml-2" />
                         </button>
                         {mobileDropdownOpen && (
-                            <div className="text-gray-600 rounded-lg">
+                            <div className="bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
                                 <button
                                     onClick={() => changeLanguage('es')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -440,7 +489,7 @@ const Navbar = () => {
                                 </button>
                                 <button
                                     onClick={() => changeLanguage('en')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 hover:font-bold hover:text-blue-500 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -456,6 +505,7 @@ const Navbar = () => {
             )}
         </nav>
     );
+
 };
 
 export default Navbar;

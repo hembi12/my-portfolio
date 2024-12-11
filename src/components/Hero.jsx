@@ -1,4 +1,4 @@
-// Hero.jsx
+// Hero.jsx con Soporte para Modo Oscuro
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import { FaChevronDown } from "react-icons/fa";
@@ -34,7 +34,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="bg-[#f5f4f7] text-white h-screen flex flex-col justify-center items-center relative"
+            className="bg-[#f5f4f7] dark:bg-gray-800 text-gray-800 dark:text-gray-200 h-screen flex flex-col justify-center items-center relative transition-colors duration-500"
         >
             <div className="container mx-auto px-4 text-center">
                 <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight">
@@ -42,7 +42,7 @@ const Hero = () => {
                 </h1>
                 {/* Palabras animadas */}
                 <span
-                    className="text-3xl sm:text-4xl md:text-4xl text-gray-500 font-semibold"
+                    className="text-3xl sm:text-4xl md:text-4xl text-gray-500 dark:text-gray-400 font-semibold"
                     ref={typedRef}
                 ></span>
                 <div className="mt-6 flex justify-center space-x-4">
@@ -53,7 +53,7 @@ const Hero = () => {
                             e.preventDefault();
                             scrollToSection("projects");
                         }}
-                        className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
+                        className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 dark:hover:bg-blue-400 transition duration-300"
                     >
                         {t('viewProjects')}
                     </a>
@@ -64,7 +64,7 @@ const Hero = () => {
                             e.preventDefault();
                             scrollToSection("contact");
                         }}
-                        className="border border-blue-600 text-blue-600 px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white transition duration-300"
+                        className="border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500 px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-white transition duration-300"
                     >
                         {t('contactMe')}
                     </a>
@@ -78,7 +78,7 @@ const Hero = () => {
                         e.preventDefault();
                         scrollToSection("about");
                     }}
-                    className="text-blue-500 hover:text-blue-600 transition duration-300"
+                    className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-500 transition duration-300"
                 >
                     <FaChevronDown size={24} />
                 </a>
