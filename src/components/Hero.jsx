@@ -42,7 +42,7 @@ const Hero = () => {
                 </h1>
                 {/* Palabras animadas */}
                 <span
-                    className="text-3xl sm:text-4xl md:text-4xl text-gray-600 dark:text-gray-300 font-semibold"
+                    className="text-3xl sm:text-4xl md:text-4xl text-gray-500 dark:text-gray-300 font-semibold"
                     ref={typedRef}
                 ></span>
                 <div className="mt-6 flex justify-center space-x-4">
