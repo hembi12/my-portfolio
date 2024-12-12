@@ -51,8 +51,13 @@ const Contact = () => {
     };
 
     const sendEmail = async (serviceId, templateId, variables) => {
-        return emailjs.send(serviceId, templateId, variables, "p7oaquBSPoB6KaSr_");
-    };
+        return emailjs.send(
+            process.env.REACT_APP_EMAILJS_SERVICE_ID,
+            templateId,
+            variables,
+            process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        );
+    };    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,23 +65,31 @@ const Contact = () => {
             setLoading(true);
             try {
                 // Enviar correo al administrador
-                await sendEmail("service_gziqjel", "template_5p4lqb8", {
-                    from_name: formData.name,
-                    reply_to: formData.email,
-                    subject: formData.subject,
-                    message: formData.message,
-                    privacy_consent: formData.privacyConsent ? "Sí" : "No",
-                });
+                await sendEmail(
+                    process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                    process.env.REACT_APP_EMAILJS_TEMPLATE_ADMIN,
+                    {
+                        from_name: formData.name,
+                        reply_to: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                        privacy_consent: formData.privacyConsent ? "Sí" : "No",
+                    }
+                );                
 
                 // Enviar correo al usuario
-                await sendEmail("service_gziqjel", "template_7snt4z8", {
-                    from_name: formData.name,
-                    to_name: formData.name,
-                    reply_to: formData.email,
-                    subject: formData.subject,
-                    message: formData.message,
-                    privacy_consent: formData.privacyConsent ? "Sí" : "No",
-                });
+                await sendEmail(
+                    process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                    process.env.REACT_APP_EMAILJS_TEMPLATE_USER,
+                    {
+                        from_name: formData.name,
+                        to_name: formData.name,
+                        reply_to: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                        privacy_consent: formData.privacyConsent ? "Sí" : "No",
+                    }
+                );                
 
                 // Mostrar modal de éxito
                 setModal({
