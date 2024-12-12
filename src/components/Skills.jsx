@@ -23,7 +23,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                             alt="HTML5"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">HTML5</h3>
                     </div>
@@ -32,7 +32,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
                             alt="CSS3"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">CSS3</h3>
                     </div>
@@ -41,7 +41,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                             alt="JavaScript"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">JavaScript</h3>
                     </div>
@@ -50,7 +50,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
                             alt="Bootstrap"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Bootstrap</h3>
                     </div>
@@ -59,7 +59,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                             alt="React"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">React</h3>
                     </div>
@@ -68,7 +68,7 @@ const Skills = () => {
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
                             alt="TailwindCSS"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Tailwind CSS</h3>
                     </div>
@@ -77,7 +77,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
                             alt="Node.js"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Node.js</h3>
                     </div>
@@ -86,7 +86,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
                             alt="Firebase"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Firebase</h3>
                     </div>
@@ -104,7 +104,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                             alt="Git"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Git</h3>
                     </div>
@@ -122,7 +122,7 @@ const Skills = () => {
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
                             alt="Visual Studio Code"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Visual Studio Code</h3>
                     </div>

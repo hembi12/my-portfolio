@@ -30,7 +30,7 @@ const About = () => {
                         <img
                             src={AboutImage}
                             alt={t('developerImageAlt')}
-                            className="w-64 lg:w-80 self-center transition-transform duration-500 dark:filter dark:invert"
+                            className="w-64 lg:w-80 self-center transition-transform duration-500"
                         />
                     </div>
                 </div>

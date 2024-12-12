@@ -129,9 +129,9 @@ const Navbar = () => {
             className={`fixed top-0 left-0 w-full 
                 bg-gray-100 dark:bg-gray-800 
                 bg-clip-padding backdrop-filter backdrop-blur 
-                ${scrolled ? 'bg-opacity-90 dark:bg-opacity-90' : 'bg-opacity-50 dark:bg-opacity-50'} 
+                ${scrolled ? 'bg-opacity-10 dark:bg-opacity-10' : 'bg-opacity-50 dark:bg-opacity-50'} 
                 backdrop-saturate-100 backdrop-contrast-100 
-                text-gray-700 dark:text-gray-300 
+                text-black dark:text-white 
                 z-50 transition-opacity duration-300`}
         >
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
@@ -143,28 +143,12 @@ const Navbar = () => {
                     {/* Botón para alternar modo oscuro */}
                     <button
                         onClick={toggleDarkMode}
-                        className="ml-4 flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
+                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
                         aria-label="Toggle Dark Mode"
                     >
                         {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
                     </button>
                 </div>
-
-                {isPrivacyPolicy && (
-                    <div className="flex space-x-2 text-sm">
-                        <button
-                            onClick={(e) => {
-                                e.preventDefault();
-                                window.history.back();
-                            }}
-                            className="hover:text-blue-500 hover:font-bold cursor-pointer bg-transparent border-none p-0"
-                        >
-                            {t('goBack')}
-                        </button>
-                        <span>/</span>
-                        <span className="text-blue-500 underline font-bold">{t('privacyPolicy')}</span>
-                    </div>
-                )}
 
                 {isPrivacyPolicy ? (
                     <>
@@ -180,7 +164,7 @@ const Navbar = () => {
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg lg:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 text-black dark:text-white rounded-lg shadow-lg lg:w-40 w-auto">
                                         <button
                                             onClick={() => changeLanguage('es')}
                                             className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
@@ -211,7 +195,7 @@ const Navbar = () => {
                             {/* Botón de menú móvil */}
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white focus:outline-none mr-2"
+                                className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none mr-2"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -303,7 +287,7 @@ const Navbar = () => {
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg lg:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 text-black dark:text-white rounded-lg shadow-lg lg:w-40 w-auto">
                                         <button
                                             onClick={() => changeLanguage('es')}
                                             className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
@@ -334,7 +318,7 @@ const Navbar = () => {
                             {/* Botón de menú móvil */}
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white focus:outline-none mr-2"
+                                className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none mr-2"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -381,7 +365,7 @@ const Navbar = () => {
                             <FaChevronDown className="ml-2" />
                         </button>
                         {mobileDropdownOpen && (
-                            <div className="bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
+                            <div className="text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
                                 <button
                                     onClick={() => changeLanguage('es')}
                                     className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
@@ -475,7 +459,7 @@ const Navbar = () => {
                             <FaChevronDown className="ml-2" />
                         </button>
                         {mobileDropdownOpen && (
-                            <div className="bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
+                            <div className="text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
                                 <button
                                     onClick={() => changeLanguage('es')}
                                     className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
