@@ -64,7 +64,24 @@ const Contact = () => {
         if (validate()) {
             setLoading(true);
             try {
-                // Enviar correo al administrador
+                // 1. Enviar datos al servidor backend para enviar WhatsApp vía Twilio
+                const whatsappResponse = await fetch('http://localhost:5001/send-whatsapp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        subject: formData.subject,
+                        message: formData.message
+                    }),
+                });
+
+                const whatsappResult = await whatsappResponse.json();
+                if (!whatsappResult.success) {
+                    throw new Error(whatsappResult.message);
+                }
+
+                // 2. Enviar correo al administrador
                 await sendEmail(
                     process.env.REACT_APP_EMAILJS_SERVICE_ID,
                     process.env.REACT_APP_EMAILJS_TEMPLATE_ADMIN,
@@ -75,9 +92,9 @@ const Contact = () => {
                         message: formData.message,
                         privacy_consent: formData.privacyConsent ? "Sí" : "No",
                     }
-                );                
+                );
 
-                // Enviar correo al usuario
+                // 3. Enviar correo al usuario
                 await sendEmail(
                     process.env.REACT_APP_EMAILJS_SERVICE_ID,
                     process.env.REACT_APP_EMAILJS_TEMPLATE_USER,
@@ -89,7 +106,7 @@ const Contact = () => {
                         message: formData.message,
                         privacy_consent: formData.privacyConsent ? "Sí" : "No",
                     }
-                );                
+                );
 
                 // Mostrar modal de éxito
                 setModal({
@@ -102,7 +119,7 @@ const Contact = () => {
                 setFormData({ name: "", email: "", subject: "", message: "", privacyConsent: false });
                 setErrors({});
             } catch (error) {
-                console.error("Error al enviar el formulario:", error);
+                console.error("Error al procesar el formulario:", error);
                 // Mostrar modal de error
                 setModal({
                     show: true,
