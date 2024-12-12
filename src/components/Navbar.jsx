@@ -146,7 +146,7 @@ const Navbar = () => {
                         className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-500 focus:outline-none"
                         aria-label="Toggle Dark Mode"
                     >
-                        {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+                        {isDarkMode ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
                     </button>
                 </div>
 
