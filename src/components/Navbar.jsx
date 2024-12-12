@@ -143,7 +143,7 @@ const Navbar = () => {
                     {/* Botón para alternar modo oscuro */}
                     <button
                         onClick={toggleDarkMode}
-                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
+                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-500 focus:outline-none"
                         aria-label="Toggle Dark Mode"
                     >
                         {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}

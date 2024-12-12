@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="py-20 bg-[#f5f4f7] dark:bg-gray-800 text-gray-600 dark:text-gray-200 transition-colors duration-500">
+        <section className="py-20 bg-[#f5f4f7] dark:bg-gray-800 text-black dark:text-white transition-colors duration-500">
             <div className="container mx-auto px-4">
                 {/* Solo el título */}
                 <div className="mb-8">
@@ -20,9 +20,9 @@ const PrivacyPolicy = () => {
                     <p dangerouslySetInnerHTML={{ __html: t('privacyPolicyParagraph1') }}></p>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">{t('privacyPolicySection1Title')}</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('privacyPolicySection1Title')}</h2>
                         <p>{t('privacyPolicySection1Description')}</p>
-                        <ul className="list-disc ml-6 mt-2 space-y-1 text-gray-600 dark:text-gray-300">
+                        <ul className="list-disc ml-6 mt-2 space-y-1 text-black dark:text-white">
                             <li>{t('privacyPolicySection1Item1')}</li>
                             <li>{t('privacyPolicySection1Item2')}</li>
                             <li>{t('privacyPolicySection1Item3')}</li>
@@ -31,23 +31,23 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">{t('privacyPolicySection2Title')}</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('privacyPolicySection2Title')}</h2>
                         <p>{t('privacyPolicySection2Description')}</p>
-                        <ul className="list-disc ml-6 mt-2 space-y-1 text-gray-600 dark:text-gray-300">
+                        <ul className="list-disc ml-6 mt-2 space-y-1 text-black dark:text-white">
                             <li>{t('privacyPolicySection2Item1')}</li>
                             <li>{t('privacyPolicySection2Item2')}</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">{t('privacyPolicySection3Title')}</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('privacyPolicySection3Title')}</h2>
                         <p>{t('privacyPolicySection3Description')}</p>
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">{t('privacyPolicySection4Title')}</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('privacyPolicySection4Title')}</h2>
                         <p>{t('privacyPolicySection4Description')}</p>
-                        <ul className="list-disc ml-6 mt-2 space-y-1 text-gray-600 dark:text-gray-300">
+                        <ul className="list-disc ml-6 mt-2 space-y-1 text-black dark:text-white">
                             <li>{t('privacyPolicySection4Item1')}</li>
                             <li>{t('privacyPolicySection4Item2')}</li>
                             <li>{t('privacyPolicySection4Item3')}</li>
@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">{t('privacyPolicySection5Title')}</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('privacyPolicySection5Title')}</h2>
                         <p>{t('privacyPolicySection5Description')}</p>
                     </div>
 

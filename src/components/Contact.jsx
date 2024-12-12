@@ -105,7 +105,7 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="py-20 bg-[#f5f4f7] dark:bg-gray-800 text-gray-600 dark:text-gray-200 transition-colors duration-500"
+            className="py-20 bg-[#f5f4f7] dark:bg-gray-800 text-black dark:text-white transition-colors duration-500"
         >
             <div className="container mx-auto px-4">
                 <h2 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-4xl sm:text-5xl font-bold text-center mb-8">
@@ -149,7 +149,7 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="name"
-                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
+                                className="block text-black dark:text-white text-lg font-semibold mb-2"
                             >
                                 {t('form.nameLabel')}
                             </label>
@@ -170,7 +170,7 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="email"
-                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
+                                className="block text-black dark:text-white text-lg font-semibold mb-2"
                             >
                                 {t('form.emailLabel')}
                             </label>
@@ -191,7 +191,7 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="subject"
-                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
+                                className="block text-black dark:text-white text-lg font-semibold mb-2"
                             >
                                 {t('form.subjectLabel')}
                             </label>
@@ -217,7 +217,7 @@ const Contact = () => {
                         <div className="mb-6">
                             <label
                                 htmlFor="message"
-                                className="block text-gray-600 dark:text-gray-200 text-lg font-semibold mb-2"
+                                className="block text-black dark:text-white text-lg font-semibold mb-2"
                             >
                                 {t('form.messageLabel')}
                             </label>
@@ -244,7 +244,7 @@ const Contact = () => {
                                     checked={formData.privacyConsent}
                                     onChange={handleChange}
                                 />
-                                <span className="text-gray-600 dark:text-gray-200 text-sm">
+                                <span className="text-black dark:text-white text-sm">
                                     <Trans
                                         i18nKey="checkboxLabel"
                                         components={{
@@ -261,7 +261,7 @@ const Contact = () => {
                         <div className="text-center">
                             <button
                                 type="submit"
-                                className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 dark:hover:bg-blue-400 transition duration-300"
+                                className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-blue-500 transition duration-300"
                                 disabled={loading}
                             >
                                 {loading ? t('form.sending') : t('form.sendMessage')}
