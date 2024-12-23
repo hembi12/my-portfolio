@@ -278,7 +278,7 @@ const Contact = () => {
                                     <Trans
                                         i18nKey="checkboxLabel"
                                         components={{
-                                            1: <a href="/privacy-policy" className="underline text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-500" />
+                                            1: <a href="/privacy-policy" className="underline text-blue-500 dark:text-orange-400 hover:text-blue-600 dark:hover:text-orange-300" />
                                         }}
                                     />
                                 </span>

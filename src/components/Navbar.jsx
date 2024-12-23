@@ -143,7 +143,7 @@ const Navbar = () => {
                     {/* Botón para alternar modo oscuro */}
                     <button
                         onClick={toggleDarkMode}
-                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-500 focus:outline-none"
+                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-orange-500 focus:outline-none"
                         aria-label="Toggle Dark Mode"
                     >
                         {isDarkMode ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
@@ -164,10 +164,10 @@ const Navbar = () => {
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 text-black dark:text-white rounded-lg shadow-lg lg:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 text-black dark:text-white bg-white dark:bg-gray-800 rounded-lg shadow-lg lg:w-40 w-auto">
                                         <button
                                             onClick={() => changeLanguage('es')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -178,7 +178,7 @@ const Navbar = () => {
                                         </button>
                                         <button
                                             onClick={() => changeLanguage('en')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -195,7 +195,7 @@ const Navbar = () => {
                             {/* Botón de menú móvil */}
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none mr-2"
+                                className="text-black dark:text-white hover:text-blue-500 dark:hover:text-orange-400 focus:outline-none mr-2"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -225,8 +225,8 @@ const Navbar = () => {
                             <a
                                 href="#hero"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
-                                className={`hover:text-blue-500 ${
-                                    activeSection === "hero" ? "text-blue-500 font-bold underline" : ""
+                                className={`hover:text-blue-500 dark:hover:text-orange-400 ${
+                                    activeSection === "hero" ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                 }`}
                             >
                                 {t('home')}
@@ -234,8 +234,8 @@ const Navbar = () => {
                             <a
                                 href="#about"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                                className={`hover:text-blue-500 ${
-                                    activeSection === "about" ? "text-blue-500 font-bold underline" : ""
+                                className={`hover:text-blue-500 dark:hover:text-orange-400 ${
+                                    activeSection === "about" ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                 }`}
                             >
                                 {t('about')}
@@ -243,8 +243,8 @@ const Navbar = () => {
                             <a
                                 href="#skills"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}
-                                className={`hover:text-blue-500 ${
-                                    activeSection === "skills" ? "text-blue-500 font-bold underline" : ""
+                                className={`hover:text-blue-500 dark:hover:text-orange-400 ${
+                                    activeSection === "skills" ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                 }`}
                             >
                                 {t('skills')}
@@ -252,8 +252,8 @@ const Navbar = () => {
                             <a
                                 href="#projects"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
-                                className={`hover:text-blue-500 ${
-                                    activeSection === "projects" ? "text-blue-500 font-bold underline" : ""
+                                className={`hover:text-blue-500 dark:hover:text-orange-400 ${
+                                    activeSection === "projects" ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                 }`}
                             >
                                 {t('projects')}
@@ -261,8 +261,8 @@ const Navbar = () => {
                             <a
                                 href="#Resume"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); }}
-                                className={`hover:text-blue-500 ${
-                                    activeSection === "Resume" ? "text-blue-500 font-bold underline" : ""
+                                className={`hover:text-blue-500 dark:hover:text-orange-400 ${
+                                    activeSection === "Resume" ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                 }`}
                             >
                                 {t('resume')}
@@ -270,8 +270,8 @@ const Navbar = () => {
                             <a
                                 href="#contact"
                                 onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                                className={`hover:text-blue-500 ${
-                                    activeSection === "contact" ? "text-blue-500 font-bold underline" : ""
+                                className={`hover:text-blue-500 dark:hover:text-orange-400 ${
+                                    activeSection === "contact" ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                 }`}
                             >
                                 {t('contact')}
@@ -279,18 +279,18 @@ const Navbar = () => {
                             <div className="relative">
                                 <button
                                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                                    className={`flex items-center hover:text-blue-500 ${
-                                        dropdownOpen ? "text-blue-500 font-bold underline" : ""
+                                    className={`flex items-center hover:text-blue-500 dark:hover:text-orange-400 ${
+                                        dropdownOpen ? "text-blue-500 dark:text-orange-400 font-bold underline" : ""
                                     }`}
                                 >
                                     {t('language')}
                                     <FaChevronDown className="ml-2" />
                                 </button>
                                 {dropdownOpen && (
-                                    <div className="absolute left-0 mt-2 text-black dark:text-white rounded-lg shadow-lg lg:w-40 w-auto">
+                                    <div className="absolute left-0 mt-2 text-black dark:text-white bg-white dark:bg-gray-800 rounded-lg shadow-lg lg:w-40 w-auto">
                                         <button
                                             onClick={() => changeLanguage('es')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -301,7 +301,7 @@ const Navbar = () => {
                                         </button>
                                         <button
                                             onClick={() => changeLanguage('en')}
-                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                            className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                         >
                                             <img
                                                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -318,7 +318,7 @@ const Navbar = () => {
                             {/* Botón de menú móvil */}
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none mr-2"
+                                className="text-black dark:text-white hover:text-blue-500 dark:hover:text-orange-400 focus:outline-none mr-2"
                             >
                                 <svg
                                     className="w-6 h-6"
@@ -359,7 +359,7 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                            className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 flex items-center justify-between w-full"
+                            className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 flex items-center justify-between w-full"
                         >
                             {t('language')}
                             <FaChevronDown className="ml-2" />
@@ -368,7 +368,7 @@ const Navbar = () => {
                             <div className="text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
                                 <button
                                     onClick={() => changeLanguage('es')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -379,7 +379,7 @@ const Navbar = () => {
                                 </button>
                                 <button
                                     onClick={() => changeLanguage('en')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"
@@ -399,7 +399,7 @@ const Navbar = () => {
                     <a
                         href="#hero"
                         onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 ${
                             activeSection === "hero" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -408,7 +408,7 @@ const Navbar = () => {
                     <a
                         href="#about"
                         onClick={(e) => { e.preventDefault(); scrollToSection('about'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 ${
                             activeSection === "about" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -417,7 +417,7 @@ const Navbar = () => {
                     <a
                         href="#skills"
                         onClick={(e) => { e.preventDefault(); scrollToSection('skills'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 ${
                             activeSection === "skills" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -426,7 +426,7 @@ const Navbar = () => {
                     <a
                         href="#projects"
                         onClick={(e) => { e.preventDefault(); scrollToSection('projects'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 ${
                             activeSection === "projects" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -435,7 +435,7 @@ const Navbar = () => {
                     <a
                         href="#Resume"
                         onClick={(e) => { e.preventDefault(); scrollToSection('Resume'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 ${
                             activeSection === "Resume" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -444,7 +444,7 @@ const Navbar = () => {
                     <a
                         href="#contact"
                         onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setIsOpen(false); }}
-                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 ${
+                        className={`block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 ${
                             activeSection === "contact" ? "text-blue-500 font-bold underline" : ""
                         }`}
                     >
@@ -453,7 +453,7 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                            className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 flex items-center justify-between w-full"
+                            className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 flex items-center justify-between w-full"
                         >
                             {t('language')}
                             <FaChevronDown className="ml-2" />
@@ -462,7 +462,7 @@ const Navbar = () => {
                             <div className="text-gray-600 dark:text-gray-300 rounded-lg shadow-lg">
                                 <button
                                     onClick={() => changeLanguage('es')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/mx.svg"
@@ -473,7 +473,7 @@ const Navbar = () => {
                                 </button>
                                 <button
                                     onClick={() => changeLanguage('en')}
-                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-blue-400 text-left w-full"
+                                    className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 hover:font-bold hover:text-blue-500 dark:hover:text-orange-400 text-left w-full"
                                 >
                                     <img
                                         src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/us.svg"

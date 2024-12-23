@@ -19,7 +19,7 @@ const Footer = () => {
                         href="https://github.com/hembi12"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-500 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
+                        className="text-blue-600 dark:text-orange-400 hover:text-blue-500 dark:hover:text-orange-300 transition duration-300"
                         aria-label="GitHub"
                     >
                         <FaGithub size={28} />
@@ -28,7 +28,7 @@ const Footer = () => {
                         href="https://www.linkedin.com/in/hectormartil/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-500 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
+                        className="text-blue-600 dark:text-orange-400 hover:text-blue-500 dark:hover:text-orange-300 transition duration-300"
                         aria-label="LinkedIn"
                     >
                         <FaLinkedin size={28} />
