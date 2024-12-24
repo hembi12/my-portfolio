@@ -164,7 +164,7 @@ const Contact = () => {
                         </div>
                     )}
                     {/* Barra de la ventana estilo Mac */}
-                    <div className="bg-gray-300 dark:bg-gray-600 flex items-center px-4 py-2">
+                    <div className="bg-gray-300 dark:bg-gray-700 flex items-center px-4 py-2">
                         <div className="flex space-x-2">
                             <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -173,7 +173,7 @@ const Contact = () => {
                     </div>
                     <form
                         onSubmit={handleSubmit}
-                        className="bg-gray-200 dark:bg-gray-700 p-8 rounded-b-lg shadow-xl transition-colors duration-500"
+                        className="bg-gray-200 dark:bg-gray-600 p-8 rounded-b-lg shadow-xl transition-colors duration-500"
                     >
                         {/* Nombre */}
                         <div className="mb-6">
@@ -187,7 +187,7 @@ const Contact = () => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-700 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={t('form.namePlaceholder')}
                                 value={formData.name}
                                 onChange={handleChange}
@@ -208,7 +208,7 @@ const Contact = () => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-700 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={t('form.emailPlaceholder')}
                                 value={formData.email}
                                 onChange={handleChange}
@@ -228,7 +228,7 @@ const Contact = () => {
                             <select
                                 id="subject"
                                 name="subject"
-                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-700 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value={formData.subject}
                                 onChange={handleChange}
                             >
@@ -255,7 +255,7 @@ const Contact = () => {
                                 id="message"
                                 name="message"
                                 rows="5"
-                                className="w-full bg-[#f5f4f7] dark:bg-gray-600 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-[#f5f4f7] dark:bg-gray-700 text-gray-600 dark:text-gray-200 border border-gray-400 dark:border-gray-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={t('form.messagePlaceholder')}
                                 value={formData.message}
                                 onChange={handleChange}
