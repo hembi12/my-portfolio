@@ -137,13 +137,13 @@ const Navbar = () => {
             <div className="container mx-auto flex justify-between items-center px-4 py-3">
                 {/* Contenedor para "HM" y el botón de modo oscuro */}
                 <div className="flex items-center">
-                    <div className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-2xl font-bold">
+                    <div className="bg-gradient-to-r from-[#007AFF] via-[#8a4af3] to-[#FF9500] bg-clip-text text-transparent text-2xl font-bold">
                         HM
                     </div>
                     {/* Botón para alternar modo oscuro */}
                     <button
                         onClick={toggleDarkMode}
-                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-orange-500 focus:outline-none"
+                        className="ml-4 flex items-center text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-orange-400 focus:outline-none"
                         aria-label="Toggle Dark Mode"
                     >
                         {isDarkMode ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}

@@ -37,7 +37,7 @@ const Hero = () => {
             className="bg-[#f5f4f7] dark:bg-gray-800 text-gray-800 dark:text-gray-200 h-screen flex flex-col justify-center items-center relative transition-colors duration-500"
         >
             <div className="container mx-auto px-4 text-center">
-                <h1 className="bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight">
+                <h1 className="bg-gradient-to-r from-[#007AFF] via-[#8a4af3] to-[#FF9500] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-tight">
                     Héctor Martil
                 </h1>
                 {/* Palabras animadas */}
@@ -77,8 +77,8 @@ const Hero = () => {
                     onClick={(e) => {
                         e.preventDefault();
                         scrollToSection("about");
-                    }}
-                    className="text-blue-500 dark:text-[#AF52DE] hover:text-blue-600 dark:hover:text-purple-400 transition duration-300"
+                    }} 
+                    className="text-blue-500 dark:text-orange-400 hover:text-blue-600 dark:hover:text-orange-300 transition duration-300"
                 >
                     <FaChevronDown size={24} />
                 </a>
