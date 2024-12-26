@@ -65,7 +65,7 @@ const Contact = () => {
             setLoading(true);
             try {
                 // 1. Enviar datos al servidor backend para enviar WhatsApp vía Twilio
-                const whatsappResponse = await fetch('http://localhost:5001/send-whatsapp', {
+                const whatsappResponse = await fetch('/api/send-whatsapp', { // Use relative path for Vercel
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

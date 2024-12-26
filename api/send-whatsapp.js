@@ -1,4 +1,3 @@
-// api/send-whatsapp.js
 require('dotenv').config(); // Load environment variables from .env (for local testing)
 const twilio = require('twilio');
 
