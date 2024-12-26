@@ -52,7 +52,8 @@ const Contact = () => {
 
     const sendEmail = async (templateId, variables) => {
         // Imprime la clave pública para verificar que está cargada
-        console.log("Public Key:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+        console.log("EmailJS Public Key:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+        console.log("EmailJS Service ID:", process.env.REACT_APP_EMAILJS_SERVICE_ID);        
         return emailjs.send(
             process.env.REACT_APP_EMAILJS_SERVICE_ID,
             templateId,
