@@ -50,7 +50,7 @@ const Contact = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const sendEmail = async (serviceId, templateId, variables) => {
+    const sendEmail = async (_serviceId, templateId, variables) => {
         return emailjs.send(
             process.env.REACT_APP_EMAILJS_SERVICE_ID,
             templateId,
