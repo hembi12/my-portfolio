@@ -1,7 +1,8 @@
 // App.js
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { SpeedInsights } from "@vercel/speed-insights"; // Importación de Speed Insights
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Hero = lazy(() => import("./components/Hero"));
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      <Suspense fallback={<div>{t('loading')}</div>}>
+      <Suspense fallback={<div>{t("loading")}</div>}>
         <Navbar />
         <Routes>
           <Route
@@ -45,6 +46,8 @@ function App() {
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
+        {/* Componente Speed Insights para monitoreo de rendimiento */}
+        <SpeedInsights />
         <Footer />
       </Suspense>
     </Router>
