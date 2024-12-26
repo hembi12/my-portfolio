@@ -2,7 +2,7 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { SpeedInsights } from "@vercel/speed-insights"; // Importación de Speed Insights
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Hero = lazy(() => import("./components/Hero"));
