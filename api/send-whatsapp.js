@@ -1,43 +1,27 @@
-require('dotenv').config(); // Load environment variables from .env (for local testing)
-const twilio = require('twilio');
+import twilio from 'twilio'; // Importa twilio
 
-exports.handler = async (req, res) => {
-    // Check if it's a POST request
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method Not Allowed' }); // Only allow POST
-    }
+export default async function handler(req, res) { // Exportación por defecto OBLIGATORIA
+    if (req.method === 'POST') { // Verifica que sea una petición POST
+        try {
+            const accountSid = process.env.TWILIO_ACCOUNT_SID;
+            const authToken = process.env.TWILIO_AUTH_TOKEN;
+            const client = twilio(accountSid, authToken);
 
-    // Get data from the request body
-    const { name, email, subject, message } = req.body;
+            const { name, email, subject, message } = req.body;
 
-    // Check if required fields are present
-    if (!name || !email || !subject || !message) {
-        return res.status(400).json({ error: 'Missing required fields' });
-    }
+            const response = await client.messages.create({
+                from: process.env.TWILIO_WHATSAPP_NUMBER,
+                to: process.env.DESTINATION_WHATSAPP_NUMBER,
+                body: `Nuevo mensaje de contacto:\nNombre: ${name}\nEmail: ${email}\nAsunto: ${subject}\nMensaje: ${message}`,
+            });
 
-    try {
-        // Initialize Twilio client INSIDE the handler (important for Vercel)
-        const accountSid = process.env.TWILIO_ACCOUNT_SID;
-        const authToken = process.env.TWILIO_AUTH_TOKEN;
-
-        if (!accountSid || !authToken) {
-            console.error('Twilio credentials are missing. Check environment variables.');
-            return res.status(500).json({ error: 'Twilio configuration error' });
+            console.log("Mensaje de WhatsApp enviado:", response.sid);
+            return res.status(200).json({ success: true, message: 'Mensaje enviado correctamente' }); // Respuesta JSON
+        } catch (error) {
+            console.error('Error al enviar mensaje de WhatsApp:', error);
+            return res.status(500).json({ success: false, message: 'Error al enviar WhatsApp', error: error.message }); // Respuesta JSON en caso de error
         }
-
-        const client = twilio(accountSid, authToken);
-
-        const response = await client.messages.create({
-            from: process.env.TWILIO_WHATSAPP_NUMBER,
-            to: process.env.DESTINATION_WHATSAPP_NUMBER,
-            body: `Nuevo mensaje de contacto:\nNombre: ${name}\nEmail: ${email}\nAsunto: ${subject}\nMensaje: ${message}`,
-        });
-
-        console.log('WhatsApp message sent successfully:', response.sid);
-        return res.status(200).json({ success: true, message: 'Message sent via WhatsApp', sid: response.sid });
-
-    } catch (error) {
-        console.error('Error sending WhatsApp message:', error);
-        return res.status(500).json({ success: false, message: 'Error sending WhatsApp', error: error.message });
+    } else {
+        return res.status(405).json({ message: 'Método no permitido. Solo se aceptan peticiones POST' }); // Manejo de otros métodos HTTP
     }
-};
+}
