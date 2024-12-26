@@ -1,6 +1,6 @@
 // Contact.jsx con Soporte para Modo Oscuro
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser'; // Importación correcta
 import { useTranslation, Trans } from 'react-i18next';
 
 const Contact = () => {
