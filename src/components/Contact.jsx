@@ -83,7 +83,6 @@ const Contact = () => {
 
                 // 2. Enviar correo al administrador
                 await sendEmail(
-                    process.env.REACT_APP_EMAILJS_SERVICE_ID,
                     process.env.REACT_APP_EMAILJS_TEMPLATE_ADMIN,
                     {
                         from_name: formData.name,
