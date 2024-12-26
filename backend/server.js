@@ -1,42 +1,41 @@
 require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
 const twilio = require('twilio');
 
-const app = express();
-const port = process.env.PORT || 5001;
+// This file is now primarily for local development.
+// Vercel will use the functions in the /api directory.
 
-// Configuración de Twilio
+// You can keep this code for local testing if you need to:
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
 
-// Middlewares
-app.use(cors());
-app.use(bodyParser.json());
+if (accountSid && authToken) { // Check if credentials are available
+    const client = twilio(accountSid, authToken);
 
-// Ruta para enviar WhatsApp
-app.post('/send-whatsapp', async (req, res) => {
-    const { name, email, subject, message } = req.body;
+    // Example local test route (optional)
+    const express = require('express');
+    const bodyParser = require('body-parser');
 
-    try {
-        // Enviar mensaje por WhatsApp usando Twilio
-        const response = await client.messages.create({
-            from: process.env.TWILIO_WHATSAPP_NUMBER, // Sandbox WhatsApp Number
-            to: process.env.DESTINATION_WHATSAPP_NUMBER, // Número de destino verificado
-            body: `Nuevo mensaje de contacto:\nNombre: ${name}\nEmail: ${email}\nAsunto: ${subject}\nMensaje: ${message}`,
-        });
+    const app = express();
+    app.use(bodyParser.json());
 
-        console.log('Mensaje enviado con éxito:', response.sid);
-        res.status(200).json({ success: true, message: 'Mensaje enviado vía WhatsApp', sid: response.sid });
-    } catch (error) {
-        console.error('Error al enviar WhatsApp:', error.message);
-        res.status(500).json({ success: false, message: 'Error al enviar WhatsApp', error: error.message });
-    }
-});
+    app.post('/test-whatsapp', async (req, res) => {
+        try {
+            const response = await client.messages.create({
+                from: process.env.TWILIO_WHATSAPP_NUMBER,
+                to: process.env.DESTINATION_WHATSAPP_NUMBER,
+                body: "This is a test message from local server.js",
+            });
+            res.send(`Message sent successfully: ${response.sid}`);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Error sending message.");
+        }
+    });
 
-// Servidor escuchando
-app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+    const port = process.env.PORT || 5001;
+    app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+} else {
+    console.warn("Twilio credentials not found. Local testing routes will not be available.");
+}
