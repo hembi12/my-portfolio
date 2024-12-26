@@ -51,13 +51,15 @@ const Contact = () => {
     };
 
     const sendEmail = async (templateId, variables) => {
+        // Imprime la clave pública para verificar que está cargada
+        console.log("Public Key:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
         return emailjs.send(
             process.env.REACT_APP_EMAILJS_SERVICE_ID,
             templateId,
             variables,
             process.env.REACT_APP_EMAILJS_PUBLIC_KEY
         );
-    };    
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
