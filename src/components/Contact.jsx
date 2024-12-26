@@ -95,7 +95,6 @@ const Contact = () => {
 
                 // 3. Enviar correo al usuario
                 await sendEmail(
-                    process.env.REACT_APP_EMAILJS_SERVICE_ID,
                     process.env.REACT_APP_EMAILJS_TEMPLATE_USER,
                     {
                         from_name: formData.name,
