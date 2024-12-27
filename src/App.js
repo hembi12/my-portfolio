@@ -2,7 +2,7 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Hero = lazy(() => import("./components/Hero"));
@@ -46,9 +46,8 @@ function App() {
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
-        {/* Componente Speed Insights para monitoreo de rendimiento */}
-        <SpeedInsights />
         <Footer />
+        <Analytics />
       </Suspense>
     </Router>
   );
