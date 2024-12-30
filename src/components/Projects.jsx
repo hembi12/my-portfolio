@@ -114,7 +114,8 @@ const Projects = () => {
                                             key={techIndex}
                                             src={tech}
                                             alt={t('technologyLogo')}
-                                            className="w-7 h-7 transition-transform duration-500"
+                                            className={`w-7 h-7 transition-transform duration-500 ${tech.includes("vercel") ? "dark:filter dark:invert" : ""
+                                                }`}
                                         />
                                     ))}
                                 </div>
