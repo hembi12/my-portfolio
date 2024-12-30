@@ -1,6 +1,8 @@
 // Projects.jsx con Soporte para Modo Oscuro
 import React from "react";
 import { useTranslation } from 'react-i18next';
+import Project1image from "../assets/images/Project1.png";
+
 
 const Projects = () => {
     const { t } = useTranslation();
@@ -9,14 +11,15 @@ const Projects = () => {
         {
             title: t('project1Title'),
             description: t('project1Description'),
-            image: "https://via.placeholder.com/300",
+            image: Project1image,
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
             ],
-            demoLink: "#",
-            codeLink: "#",
+            demoLink: "https://landing-page-woad-pi-82.vercel.app/",
+            codeLink: "https://github.com/hembi12/landing-page",
         },
         {
             title: t('project2Title'),
@@ -75,7 +78,7 @@ const Projects = () => {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-48 object-cover transition-transform duration-500"
+                                    className="w-full h-48 object-contain p-2 transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <a
@@ -90,7 +93,7 @@ const Projects = () => {
                                         href={project.codeLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="border border-blue-600 font-bold hover:bg-blue-600 hover:text-white dark:hover:text-white text-blue-600 dark:text-blue-500 py-2 px-4 rounded-full mx-2 transition-colors duration-300"
+                                        className="bg-blue-600 font-bold hover:bg-blue-500 text-white py-2 px-4 rounded-full mx-2 transition-colors duration-300"
                                     >
                                         {t('viewCode')}
                                     </a>
