@@ -81,11 +81,11 @@ const Projects = () => {
                                 </div>
                             </div>
                             {/* Contenedor de la imagen con botones */}
-                            <div className="relative">
+                            <div className="relative aspect-w-16 aspect-h-9">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-48 object-contain p-2 transition-transform duration-500"
+                                    className="w-full h-full object-contain transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <a
