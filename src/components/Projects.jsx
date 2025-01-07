@@ -3,6 +3,8 @@ import React from "react";
 import { useTranslation } from 'react-i18next';
 import Project1image from "../assets/images/Project1.png";
 import Project2image from "../assets/images/Project2.png";
+import Project3image from "../assets/images/Project3.png";
+
 
 const Projects = () => {
     const { t } = useTranslation();
@@ -16,6 +18,7 @@ const Projects = () => {
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
                 "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
             ],
             demoLink: "https://landing-page-woad-pi-82.vercel.app/",
@@ -27,8 +30,9 @@ const Projects = () => {
             image: Project2image,
             technologies: [
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
                 "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
                 "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
             ],
             demoLink: "https://appointments-liard.vercel.app/",
@@ -37,14 +41,16 @@ const Projects = () => {
         {
             title: t('project3Title'),
             description: t('project3Description'),
-            image: "https://via.placeholder.com/300",
+            image: Project3image,
             technologies: [
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
             ],
-            demoLink: "#",
-            codeLink: "#",
+            demoLink: "https://rsvp-cumple.web.app/",
+            codeLink: "https://github.com/hembi12/cumplea-os_30",
         },
     ];
 
