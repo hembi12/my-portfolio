@@ -2,7 +2,7 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
 import Project1image from "../assets/images/Project1.png";
-
+import Project2image from "../assets/images/Project2.png";
 
 const Projects = () => {
     const { t } = useTranslation();
@@ -24,14 +24,15 @@ const Projects = () => {
         {
             title: t('project2Title'),
             description: t('project2Description'),
-            image: "https://via.placeholder.com/300",
+            image: Project2image,
             technologies: [
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
             ],
-            demoLink: "#",
-            codeLink: "#",
+            demoLink: "https://appointments-liard.vercel.app/",
+            codeLink: "https://github.com/hembi12/appointments",
         },
         {
             title: t('project3Title'),
@@ -114,7 +115,7 @@ const Projects = () => {
                                             key={techIndex}
                                             src={tech}
                                             alt={t('technologyLogo')}
-                                            className={`w-7 h-7 transition-transform duration-500 ${tech.includes("vercel") ? "dark:filter dark:invert" : ""
+                                            className={`w-7 h-7 transition-transform duration-500 ${tech.includes("nextjs") || tech.includes("vercel") ? "dark:filter dark:invert" : ""
                                                 }`}
                                         />
                                     ))}
