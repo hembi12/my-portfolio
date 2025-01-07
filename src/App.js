@@ -1,9 +1,9 @@
-// App.js
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Analytics } from "@vercel/analytics/react";
 
+// Lazy-loaded components
 const Navbar = lazy(() => import("./components/Navbar"));
 const Hero = lazy(() => import("./components/Hero"));
 const About = lazy(() => import("./components/About"));
@@ -29,27 +29,36 @@ function App() {
   return (
     <Router>
       <Suspense fallback={<div>{t("loading")}</div>}>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <About />
-                <Skills />
-                <Projects />
-                <Resume />
-                <Contact />
-              </>
-            }
-          />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        </Routes>
-        <Footer />
+        <Main />
         <Analytics />
       </Suspense>
     </Router>
+  );
+}
+
+function Main() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              {/* Página principal */}
+              <Hero />
+              <About />
+              <Skills />
+              <Projects />
+              <Resume />
+              <Contact />
+            </>
+          }
+        />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
