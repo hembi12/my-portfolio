@@ -1,7 +1,5 @@
-// Skills.jsx con soporte para Modo Oscuro y tecnologías adicionales
 import React from "react";
 import { useTranslation } from 'react-i18next';
-import { FaEnvelope } from 'react-icons/fa';
 
 const Skills = () => {
     const { t } = useTranslation();
@@ -44,6 +42,14 @@ const Skills = () => {
                         />
                         <h3 className="mt-4 text-lg font-semibold">JavaScript</h3>
                     </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                            alt="TypeScript"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
+                        />
+                        <h3 className="mt-4 text-lg font-semibold">TypeScript</h3>
+                    </div>
                     {/* Frameworks y Librerías */}
                     <div className="flex flex-col items-center">
                         <img
@@ -55,6 +61,14 @@ const Skills = () => {
                     </div>
                     <div className="flex flex-col items-center">
                         <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+                            alt="TailwindCSS"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
+                        />
+                        <h3 className="mt-4 text-lg font-semibold">Tailwind CSS</h3>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                             alt="React"
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
@@ -63,11 +77,11 @@ const Skills = () => {
                     </div>
                     <div className="flex flex-col items-center">
                         <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
-                            alt="TailwindCSS"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                            alt="Next.js"
+                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
                         />
-                        <h3 className="mt-4 text-lg font-semibold">Tailwind CSS</h3>
+                        <h3 className="mt-4 text-lg font-semibold">Next.js</h3>
                     </div>
                     <div className="flex flex-col items-center">
                         <img
@@ -118,18 +132,6 @@ const Skills = () => {
                             className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
                         />
                         <h3 className="mt-4 text-lg font-semibold">Express</h3>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twilio.svg"
-                            alt="Twilio"
-                            className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110 dark:filter dark:invert"
-                        />
-                        <h3 className="mt-4 text-lg font-semibold">Twilio</h3>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <FaEnvelope className="w-14 h-14 transition-transform duration-300 ease-in-out hover:scale-110" />
-                        <h3 className="mt-4 text-lg font-semibold">EmailJS</h3>
                     </div>
                     <div className="flex flex-col items-center">
                         <img
